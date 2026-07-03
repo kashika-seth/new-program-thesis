@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Resilient Sectors — Investment Thesis 2026</title>
+<style>
+:root{
+  --navy:#1D3557;--navy2:#152944;--gold:#B78B2A;--gold2:#D4A843;
+  --gold-bg:#FDF6E3;--white:#fff;--bg:#F4F6F9;--text:#1a1a2e;
+  --mid:#4a5568;--light:#718096;--border:#DDE3EC;
+  --blue-bg:#EBF4FF;--green:#15803d;--green-bg:#DCFCE7;
+  --amber:#92400e;--amber-bg:#FEF3C7;--red:#991b1b;--red-bg:#FEE2E2;
+  --fy27:#15803d;--fy28:#1d4ed8;--fy29:#7c3aed;
+  --r:6px;--shadow:0 1px 4px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.55;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:var(--navy2);border-bottom:2px solid var(--gold);display:flex;flex-wrap:wrap;padding:0 40px;}
+nav a{color:rgba(255,255,255,.6);font-size:11px;font-weight:500;padding:9px 9px;white-space:nowrap;text-decoration:none;transition:color .15s;}
+nav a:hover{color:var(--gold2);}
+nav .sep{color:rgba(255,255,255,.2);padding:9px 3px;font-size:10px;}
+
+/* COVER */
+.cover{background:var(--navy2);color:#fff;padding:52px 40px 44px;border-left:5px solid var(--gold);}
+.cover-eye{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px;font-weight:600;}
+.cover h1{font-size:38px;font-weight:800;line-height:1.1;margin-bottom:6px;}
+.cover h1 em{color:var(--gold2);font-style:normal;}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.55);font-weight:300;margin-bottom:36px;}
+.cover-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:700px;}
+.cstat{border:1px solid rgba(183,139,42,.3);border-radius:var(--r);padding:16px 20px;background:rgba(255,255,255,.04);}
+.cstat-v{font-size:28px;font-weight:800;color:var(--gold2);display:block;}
+.cstat-l{font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;line-height:1.4;}
+.cover-foot{margin-top:32px;font-size:10px;color:rgba(255,255,255,.28);font-style:italic;border-top:1px solid rgba(255,255,255,.08);padding-top:14px;}
+
+/* SECTION BANNER */
+.banner{background:var(--navy);color:#fff;padding:24px 40px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+.banner h2{font-size:20px;font-weight:700;}
+.banner p{font-size:11px;color:rgba(255,255,255,.45);text-align:right;max-width:340px;}
+.gold-bar{height:3px;background:var(--gold);}
+.page{padding:28px 40px;}
+.page-sm{padding:20px 40px;}
+
+/* METHODOLOGY */
+.method-list{display:flex;flex-direction:column;gap:7px;margin-top:16px;}
+.method-row{display:grid;grid-template-columns:196px 1fr;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
+.method-lbl{padding:12px 15px;display:flex;flex-direction:column;justify-content:center;gap:3px;}
+.method-lbl b{font-size:11.5px;font-weight:700;color:var(--navy);}
+.method-lbl small{font-size:10px;color:var(--gold);font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.method-row:nth-child(1) .method-lbl,.method-row:nth-child(2) .method-lbl{background:var(--blue-bg);}
+.method-row:nth-child(3) .method-lbl,.method-row:nth-child(4) .method-lbl{background:var(--gold-bg);}
+.method-row:nth-child(5) .method-lbl{background:#f0f2f5;}
+.method-desc{background:#fff;padding:12px 16px;font-size:12px;color:var(--mid);display:flex;align-items:center;border-left:1px solid var(--border);}
+.method-note{background:var(--gold-bg);border:1px solid var(--gold);border-radius:var(--r);padding:10px 14px;font-size:11px;color:var(--mid);margin-top:12px;font-style:italic;}
+
+/* AI SCORE LEGEND TABLE */
+.score-table{width:100%;border-collapse:collapse;margin-top:14px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
+.score-table th{background:var(--navy);color:#fff;padding:7px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.06em;text-align:left;}
+.score-table td{padding:7px 12px;font-size:11.5px;border-bottom:1px solid var(--border);}
+.score-table tr:last-child td{border-bottom:none;}
+.score-table tr:nth-child(odd) td{background:#fff;}
+.score-table tr:nth-child(even) td{background:#f9fafc;}
+
+/* OVERVIEW GRID */
+.ov-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:14px;}
+.ov-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
+.ov-head{padding:6px 9px;font-size:9px;font-weight:700;color:#fff;letter-spacing:.04em;line-height:1.3;}
+.ov-body{padding:9px 9px 8px;}
+.ov-name{font-size:11px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px;min-height:30px;}
+.ov-meta{font-size:9.5px;color:var(--light);margin-bottom:2px;}
+.ov-meta b{color:var(--navy);font-weight:600;}
+.ov-bar{height:3px;background:var(--border);border-radius:99px;margin:6px 0 3px;}
+.ov-bar-fill{height:100%;border-radius:99px;}
+.ov-score{font-size:9.5px;font-weight:700;}
+
+/* SECTOR CARD */
+.scard{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow);}
+.scard-head{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 18px;background:var(--navy);gap:12px;}
+.scard-head-left h3{font-size:16px;font-weight:700;color:#fff;line-height:1.2;}
+.scard-head-left p{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;font-style:italic;}
+.badge{font-size:9px;font-weight:700;padding:4px 10px;border-radius:3px;letter-spacing:.08em;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.b27{background:var(--fy27);color:#fff;}
+.b2728{background:var(--navy);color:var(--gold2);border:1px solid var(--gold);}
+.b28{background:var(--fy28);color:#fff;}
+.b29{background:var(--fy29);color:#fff;}
+
+/* metrics */
+.scard-metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
+.metric{padding:10px 14px;border-right:1px solid var(--border);}
+.metric:last-child{border-right:none;}
+.metric-v{font-size:19px;font-weight:800;color:var(--navy);display:block;line-height:1;}
+.metric-l{font-size:9.5px;color:var(--light);margin-top:2px;line-height:1.3;}
+
+/* 3-box info strip */
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);}
+.info-cell{padding:8px 14px;font-size:11px;display:flex;gap:7px;align-items:flex-start;}
+.info-cell:nth-child(1){background:#FFFBF0;border-right:1px solid var(--border);}
+.info-cell:nth-child(2){background:#EEF4FF;border-right:1px solid var(--border);}
+.info-cell:nth-child(3){background:#EEF9F0;}
+.info-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+.info-cell b{font-weight:700;color:var(--navy);}
+.info-cell span{color:var(--mid);}
+.info-src{font-size:9px;color:var(--light);font-style:italic;display:block;margin-top:1px;}
+
+/* 4-col body */
+.scard-body{display:grid;grid-template-columns:repeat(4,1fr);}
+.bcol{padding:12px 14px;border-right:1px solid var(--border);}
+.bcol:last-child{border-right:none;}
+.bcol-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid;}
+.t-navy{color:var(--navy);border-color:var(--navy);}
+.t-gold{color:var(--gold);border-color:var(--gold);}
+.t-green{color:var(--green);border-color:var(--green);}
+.t-purple{color:#6d28d9;border-color:#6d28d9;}
+
+.ai-bar-bg{height:4px;background:var(--border);border-radius:99px;margin:0 0 3px;}
+.ai-bar-fg{height:100%;border-radius:99px;background:var(--navy);}
+.ai-num{font-size:10.5px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+
+.li-check,.li-arrow,.li-dot{display:flex;gap:6px;margin-bottom:5px;font-size:11px;color:var(--mid);line-height:1.4;align-items:flex-start;}
+.li-check::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;font-size:10px;margin-top:1px;}
+.li-arrow::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;}
+.li-dot::before{content:'·';color:var(--light);font-weight:700;flex-shrink:0;}
+
+.chip{background:var(--blue-bg);border:1px solid #c8deff;border-radius:4px;padding:4px 8px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;gap:6px;}
+.chip-n{font-size:11px;font-weight:600;color:var(--navy);line-height:1.3;}
+.chip-f{font-size:10px;color:var(--gold);font-weight:600;white-space:nowrap;}
+
+/* launch timeline box */
+.launch-box{background:#f9fafc;border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;margin-bottom:5px;font-size:11px;}
+.launch-box-head{font-weight:700;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.launch-row{display:flex;gap:8px;margin-bottom:3px;align-items:flex-start;}
+.launch-key{color:var(--light);min-width:90px;flex-shrink:0;font-size:10.5px;}
+.launch-val{color:var(--text);font-size:10.5px;}
+
+/* competitor table */
+.comp-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:6px;}
+.comp-table th{background:#f0f4f8;padding:5px 8px;font-size:9.5px;font-weight:700;color:var(--navy);text-align:left;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--border);}
+.comp-table td{padding:5px 8px;border:1px solid var(--border);color:var(--mid);}
+.comp-table tr:nth-child(even) td{background:#f9fafc;}
+
+.verdict{padding:8px 16px;font-size:11.5px;border-top:1px solid var(--border);line-height:1.5;}
+.verdict b{color:var(--navy);font-weight:700;}
+.v-green{background:var(--green-bg);border-left:3px solid var(--green);}
+.v-blue{background:var(--blue-bg);border-left:3px solid var(--fy28);}
+.v-amber{background:var(--amber-bg);border-left:3px solid var(--amber);}
+.v-purple{background:#ede9fe;border-left:3px solid #6d28d9;}
+
+/* MATRIX */
+.tier-wrap{margin-bottom:20px;}
+.tier-head{padding:7px 14px;font-size:11px;font-weight:700;color:#fff;border-radius:var(--r) var(--r) 0 0;display:flex;align-items:center;justify-content:space-between;}
+.tier-sub{font-size:10px;font-weight:400;opacity:.8;}
+table.mtable{width:100%;border-collapse:collapse;border:1px solid var(--border);}
+.mtable th{background:#f0f4f8;padding:7px 11px;font-size:10px;font-weight:700;color:var(--navy);text-align:left;text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--border);}
+.mtable td{padding:7px 11px;font-size:11.5px;border:1px solid var(--border);vertical-align:middle;}
+.mtable tr:nth-child(odd) td{background:#fff;}
+.mtable tr:nth-child(even) td{background:#f9fafc;}
+.td-n{font-weight:600;color:var(--navy);}
+.td-f{font-weight:700;color:var(--gold);}
+.td-p{font-size:10.5px;color:var(--mid);}
+.td-e{font-style:italic;color:var(--light);font-size:10.5px;}
+
+/* CAMPUS TABLE */
+.campus-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:11.5px;}
+.campus-table th{background:var(--navy);color:#fff;padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.05em;text-align:left;border:1px solid var(--border);}
+.campus-table td{padding:8px 12px;border:1px solid var(--border);}
+.campus-table tr:nth-child(odd) td{background:#fff;}
+.campus-table tr:nth-child(even) td{background:#f9fafc;}
+.campus-name{font-weight:700;color:var(--navy);}
+
+/* TIMELINE ROADMAP */
+.rm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;}
+.rm-col{background:#fff;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);}
+.rm-head{padding:11px 16px;font-weight:700;font-size:12.5px;color:#fff;}
+.rm-body{padding:13px 16px;}
+.rm-action{font-size:11px;color:var(--mid);margin-bottom:10px;font-style:italic;line-height:1.5;}
+.rm-item{display:flex;gap:7px;margin-bottom:6px;font-size:11.5px;font-weight:600;color:var(--text);align-items:flex-start;}
+.rm-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.rm-warn{background:var(--gold-bg);border:1px solid var(--gold);border-radius:var(--r);padding:9px 13px;font-size:11px;color:var(--text);margin-top:16px;line-height:1.5;}
+
+/* INTAKE RULES BOX */
+.intake-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px;}
+.intake-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);}
+.intake-card h4{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+
+/* NOTABLE DEV */
+.notables{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px;}
+.notable-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px;box-shadow:var(--shadow);}
+.notable-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:3px;margin-bottom:7px;}
+.tag-green{background:var(--green-bg);color:var(--green);}
+.tag-blue{background:var(--blue-bg);color:var(--fy28);}
+.tag-amber{background:var(--amber-bg);color:var(--amber);}
+.tag-red{background:var(--red-bg);color:var(--red);}
+.notable-card h4{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px;}
+.notable-card p{font-size:11px;color:var(--mid);line-height:1.5;}
+
+.tag-navy{background:var(--blue-bg);color:var(--navy);}
+
+/* helpers */
+.spacer{height:32px;}
+.hr{height:1px;background:var(--border);margin:0 64px;}
+.inline-tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-left:4px;vertical-align:middle;}
+.i-fy27{background:var(--green-bg);color:var(--green);}
+.i-fy28{background:var(--blue-bg);color:var(--fy28);}
+.i-fy29{background:#ede9fe;color:#6d28d9;}
+
+/* ── STRATEGIC CONTEXT SECTION ── */
+.sc-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.sc-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;}
+.sc-ctitle{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid var(--navy);color:var(--navy);}
+.sc-ctitle.gold{border-color:var(--gold);color:var(--gold);}
+.sc-ctitle.green{border-color:var(--green);color:var(--green);}
+.sc-alert{border-radius:var(--r);padding:11px 15px;margin-bottom:16px;font-size:12px;line-height:1.6;}
+.sc-alert.gold{background:var(--gold-bg);border-left:3px solid var(--gold);}
+.sc-alert.green{background:var(--green-bg);border-left:3px solid var(--green);}
+.sc-alert.blue{background:var(--blue-bg);border-left:3px solid #185FA5;}
+.sc-alert.amber{background:var(--amber-bg);border-left:3px solid var(--amber);}
+.sc-alert.red{background:#FEE2E2;border-left:3px solid #991b1b;}
+.sc-li{display:flex;gap:6px;margin-bottom:5px;font-size:12px;color:var(--mid);line-height:1.4;align-items:flex-start;}
+.sc-li.chk::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0;}
+.sc-li.arr::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0;}
+.sc-li.cross::before{content:"✗";color:#991b1b;font-weight:800;flex-shrink:0;}
+.job-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.jcard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px 13px;}
+.jcard-role{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.jcard-sal{font-size:11px;color:var(--gold);font-weight:600;margin-bottom:4px;}
+.jcard-where{font-size:10.5px;color:var(--light);}
+.jcard-future{font-size:10.5px;color:var(--green);margin-top:4px;font-style:italic;}
+.yr-tag{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-bottom:5px;}
+.yr-now{background:var(--blue-bg);color:#185FA5;}
+.yr-new{background:var(--amber-bg);color:var(--amber);}
+.pchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.pchip{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:9px 13px;flex:1;min-width:160px;}
+.pchip-name{font-size:12px;font-weight:700;color:var(--navy);}
+.pchip-type{font-size:10px;color:var(--light);margin-top:2px;}
+.pchip-desc{font-size:11px;color:var(--mid);margin-top:4px;line-height:1.4;}
+/* ── DEEP DIVE TABS ── */
+.dd-tabbar{display:flex;background:var(--navy);border-bottom:2px solid var(--gold);padding:0 40px;overflow-x:auto;flex-wrap:nowrap;}
+.dd-tab{padding:12px 22px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.dd-tab:hover{color:rgba(255,255,255,.85);}
+.dd-tab.active{color:#fff;border-bottom-color:var(--gold);}
+.dd-pane{display:none;padding:28px 40px;}
+.dd-pane.active{display:block;}
+.dd-pane{display:none;padding:24px 40px;}
+.dd-sub{font-size:14.5px;font-weight:700;color:var(--navy);margin:18px 0 10px;}
+.dd-met-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;}
+.dd-met{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;border-left:3px solid var(--gold);}
+.dd-met-v{font-size:20px;font-weight:800;color:var(--navy);display:block;line-height:1;}
+.dd-met-l{font-size:9.5px;color:var(--light);margin-top:3px;line-height:1.3;}
+.dd-tl{position:relative;margin-left:14px;margin-bottom:16px;}
+.dd-tl::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--border);}
+.dd-tli{position:relative;padding-left:22px;margin-bottom:13px;}
+.dd-tli-dot{position:absolute;left:-5px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:#fff;z-index:1;}
+.dd-tli-head{font-size:12px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.dd-tli-sub{font-size:11.5px;color:var(--mid);margin-top:3px;line-height:1.5;}
+.step-tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.05em;}
+.st-g{background:var(--green-bg);color:var(--green);}
+.st-b{background:var(--blue-bg);color:#185FA5;}
+.st-a{background:var(--amber-bg);color:var(--amber);}
+table.ddt{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px;}
+.ddt th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;}
+.ddt td{padding:7px 10px;border-bottom:1px solid var(--border);}
+.ddt tr:nth-child(odd) td{background:#fff;}
+.ddt tr:nth-child(even) td{background:#f9fafc;}
+.ddt tr:last-child td{border-bottom:none;}
+.ddt-h{font-weight:600;color:var(--navy);}
+.ddt-g{color:var(--green);font-weight:600;}
+.ddt-gold{color:var(--gold);font-weight:600;}
+.ddt-a{color:var(--amber);font-weight:600;}
+.dd-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.dd-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;}
+.dd-ctitle{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px;padding-bottom:5px;border-bottom:2px solid var(--navy);color:var(--navy);}
+.dd-ctitle.gold{border-color:var(--gold);color:var(--gold);}
+.dd-ctitle.green{border-color:var(--green);color:var(--green);}
+.dd-ctitle.amber{border-color:var(--amber);color:var(--amber);}
+.dd-li{display:flex;gap:6px;margin-bottom:5px;font-size:11.5px;color:var(--mid);line-height:1.4;align-items:flex-start;}
+.dd-li.chk::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0;}
+.dd-li.arr::before{content:"→";color:var(--gold);font-weight:700;flex-shrink:0;}
+.dd-li.cross::before{content:"✗";color:#991b1b;font-weight:800;flex-shrink:0;}
+
+
+/* ── PROGRAM LAUNCH FRAMEWORK ─────────────────────── */
+.fw-tabs{display:flex;background:var(--navy);padding:0 40px;border-bottom:2px solid var(--gold);overflow-x:auto;flex-wrap:nowrap;}
+.fw-tab{padding:11px 18px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.fw-tab:hover{color:rgba(255,255,255,.85);}
+.fw-tab.active{color:#fff;border-bottom-color:var(--gold);}
+.fw-pane{display:none;padding:28px 40px;}
+.fw-pane.active{display:block;}
+.fw-sub{font-size:14px;font-weight:700;color:var(--navy);margin:18px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--border);}
+.fw-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.fw-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.fw-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.fw-card-head{padding:9px 13px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.03em;}
+.fw-card-body{padding:12px 14px;}
+.fw-kv{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;font-size:11.5px;gap:8px;}
+.fw-kv .k{color:var(--light);flex-shrink:0;font-size:11px;}
+.fw-kv .v{font-weight:700;color:var(--navy);text-align:right;font-size:12px;}
+.fw-kv .v.gold{color:var(--gold);}
+.fw-kv .v.green{color:var(--green);}
+.fw-kv .v.red{color:#991b1b;}
+.fw-kv .v.amber{color:var(--amber);}
+.fw-div{height:1px;background:var(--border);margin:7px 0;}
+.fw-note{font-size:9.5px;color:var(--light);font-style:italic;margin-top:5px;line-height:1.4;}
+.fw-alert{border-radius:var(--r);padding:10px 15px;margin-bottom:14px;font-size:12px;line-height:1.6;}
+.fw-alert.gold{background:var(--gold-bg);border-left:3px solid var(--gold);}
+.fw-alert.green{background:var(--green-bg);border-left:3px solid var(--green);}
+.fw-alert.amber{background:var(--amber-bg);border-left:3px solid var(--amber);}
+.fw-alert.blue{background:var(--blue-bg);border-left:3px solid #185FA5;}
+.fw-alert.red{background:#FEE2E2;border-left:3px solid #991b1b;}
+table.fw-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:14px;}
+.fw-table th{background:var(--navy);color:#fff;padding:7px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;}
+.fw-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+.fw-table tr:nth-child(odd) td{background:#fff;}
+.fw-table tr:nth-child(even) td{background:#f9fafc;}
+.fw-table tr:last-child td{border-bottom:none;}
+.fwt-h{font-weight:700;color:var(--navy);}
+.fwt-g{color:var(--green);font-weight:600;}
+.fwt-gold{color:var(--gold);font-weight:600;}
+.fwt-r{color:#991b1b;font-weight:600;}
+.fwt-a{color:var(--amber);font-weight:600;}
+.fwt-b{color:#185FA5;font-weight:600;}
+.rbar{height:5px;background:var(--border);border-radius:99px;margin:3px 0 2px;}
+.rbar-fill{height:100%;border-radius:99px;}
+.step-tag2{font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.04em;display:inline-block;margin-bottom:3px;}
+.st2-g{background:var(--green-bg);color:var(--green);}
+.st2-b{background:var(--blue-bg);color:#185FA5;}
+.st2-a{background:var(--amber-bg);color:var(--amber);}
+.st2-r{background:#FEE2E2;color:#991b1b;}
+.fw-li{display:flex;gap:6px;margin-bottom:5px;font-size:11.5px;color:var(--mid);line-height:1.4;align-items:flex-start;}
+.fw-li.g::before{content:"✓";color:var(--green);font-weight:800;font-size:11px;flex-shrink:0;margin-top:1px;}
+.fw-li.r::before{content:"⚠";color:var(--amber);font-size:11px;flex-shrink:0;margin-top:1px;}
+.fw-li.dot::before{content:"·";color:var(--light);font-size:16px;flex-shrink:0;line-height:1.1;}
+
+
+/* ── SECTOR SELECTION FRAMEWORK ──────────────────── */
+.sf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+.sf-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);}
+.sf-head{padding:10px 14px 9px;display:flex;align-items:center;justify-content:space-between;}
+.sf-name{font-size:13px;font-weight:800;color:#fff;}
+.sf-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.05em;}
+.sf-badge.p1{background:rgba(255,255,255,.25);color:#fff;}
+.sf-badge.go{background:#86efac;color:#14532d;}
+.sf-body{padding:12px 14px;}
+.sf-row{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;border-bottom:1px solid var(--border);font-size:11.5px;}
+.sf-row:last-child{border-bottom:none;}
+.sf-lbl{color:var(--light);font-size:10.5px;}
+.sf-val{font-weight:600;color:var(--navy);text-align:right;max-width:60%;}
+.sf-val.gold{color:var(--gold);}
+.sf-val.green{color:var(--green);}
+.sf-val.red{color:#991b1b;}
+.sf-val.amber{color:var(--amber);}
+.sf-note{font-size:10.5px;color:var(--mid);line-height:1.45;margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-style:italic;}
+.sf-score-row{display:flex;gap:8px;margin:10px 0 6px;}
+.sf-score-box{flex:1;background:var(--bg);border-radius:5px;padding:6px 8px;text-align:center;}
+.sf-score-num{font-size:18px;font-weight:800;line-height:1;}
+.sf-score-lbl{font-size:9px;color:var(--light);margin-top:2px;}
+/* ── TRACKER ────────────────────────────────────────── */
+.tracker-outer{background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
+.tracker-head{background:var(--navy);color:#fff;padding:10px 16px;display:grid;grid-template-columns:180px 90px 100px 90px 90px 1fr 80px 130px;gap:8px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.tracker-row{display:grid;grid-template-columns:180px 90px 100px 90px 90px 1fr 80px 130px;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border);align-items:center;font-size:11.5px;}
+.tracker-row:last-child{border-bottom:none;}
+.tracker-row:nth-child(odd){background:#f9fafc;}
+.tr-prog{font-weight:700;color:var(--navy);}
+.tr-prog span{display:block;font-size:9.5px;color:var(--light);font-weight:400;margin-top:1px;}
+.status-pill{display:inline-block;font-size:9px;font-weight:700;padding:3px 9px;border-radius:99px;letter-spacing:.04em;white-space:nowrap;}
+.sp-ready{background:#dcfce7;color:#14532d;}
+.sp-prep{background:#dbeafe;color:#1e40af;}
+.sp-pending{background:#fef3c7;color:#92400e;}
+.sp-hold{background:#fee2e2;color:#991b1b;}
+.win-chip{font-size:10.5px;font-weight:600;color:var(--navy);}
+.win-chip.hot{color:var(--green);font-weight:700;}
+.tr-cost{font-size:11px;color:var(--mid);}
+.tr-action{font-size:10.5px;color:var(--mid);line-height:1.4;}
+.tr-campus{font-size:11px;color:var(--navy);font-weight:600;}
+.tracker-legend{display:flex;gap:14px;padding:10px 16px;background:var(--bg);border-top:1px solid var(--border);flex-wrap:wrap;}
+.tl-item{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--mid);}
+/* ── WINDOW CALENDAR ────────────────────────────────── */
+.win-cal{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;margin:14px 0;}
+.win-month{text-align:center;font-size:9px;font-weight:700;color:var(--light);padding:3px 0;}
+.win-block{height:24px;border-radius:3px;position:relative;cursor:default;}
+.win-block.open{background:var(--green);opacity:.85;}
+.win-block.prep{background:#1d4ed8;opacity:.7;}
+.win-block.submit{background:var(--gold);opacity:.9;}
+.win-block.wait{background:var(--border);}
+.win-prog-row{display:flex;align-items:center;gap:6px;margin-bottom:3px;}
+.win-prog-name{font-size:10.5px;font-weight:600;color:var(--navy);width:130px;flex-shrink:0;}
+
+
+.sb-loading{text-align:center;padding:20px;color:var(--light);font-size:12px;}
+.sb-error{background:#fee2e2;border:1px solid #fca5a5;border-radius:var(--r);padding:10px 14px;font-size:11.5px;color:#991b1b;margin-bottom:10px;}
+.sb-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+.sb-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
+.sb-table td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+.sb-table tr:nth-child(odd) td{background:#fff;}
+.sb-table tr:nth-child(even) td{background:#f9fafc;}
+.sb-table tr:hover td{background:#eff6ff!important;}
+.sb-prog{font-weight:700;color:var(--navy);}
+.sb-edit{border:1px solid transparent;border-radius:4px;padding:3px 6px;background:transparent;font-size:11.5px;color:var(--navy);cursor:text;width:100%;font-family:inherit;}
+.sb-edit:hover{border-color:var(--border);}
+.sb-edit:focus{outline:none;border-color:var(--gold);background:#fffbeb;}
+.sb-select{border:1px solid transparent;border-radius:99px;padding:3px 8px;background:transparent;font-size:11px;cursor:pointer;font-weight:700;font-family:inherit;}
+.sb-select:focus{outline:none;border-color:var(--gold);}
+.pill-apply{background:#dcfce7;color:#14532d;}
+.pill-prep{background:#dbeafe;color:#1e40af;}
+.pill-pending{background:#fef3c7;color:#92400e;}
+.pill-hold{background:#fee2e2;color:#991b1b;}
+.sb-saved-dot{font-size:9px;color:var(--green);margin-left:3px;transition:opacity .3s;}
+
+</style>
+<script>
+function ddTab(id, btn) {
+  document.querySelectorAll('.dd-pane').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.dd-tab').forEach(function(b){b.classList.remove('active');});
+  var pane = document.getElementById('dd-'+id);
+  if(pane) pane.classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="#thesis">Thesis</a><span class="sep">·</span>
+  <a href="#context">Context</a><span class="sep">·</span>
+  <a href="#sectors-evaluated">Sectors</a><span class="sep">·</span>
+  <a href="#deepdives" style="color:var(--gold2);font-weight:700;">Deep Dives ↓</a><span class="sep">·</span>
+  <a href="#all-sectors">All 12 Sectors</a><span class="sep">·</span>
+  <a href="#launch-plan" style="color:var(--gold2);font-weight:600;">Launch Plan</a>
+</nav>
+
+
+<!-- ══════════ THESIS COVER ══════════ -->
+<div <div <div id="thesis">
+  <div class="banner" style="background:var(--navy);padding:36px 40px 32px;">
+    <h2 style="font-size:30px;line-height:1.15;margin-bottom:8px;">New Program Thesis 2027</h2>
+    
+  </div>
+</div>
+<div class="gold-bar"></div>
+<div id="context">
+  <div class="banner"><h2>Why These Sectors — Setting the Context</h2><p>Why physical, regulated, employer-linked programs are structurally differentiated — and why now</p></div>
+  <div class="gold-bar"></div>
+  <div class="page">
+    <div class="sc-alert gold"><b>Core planning lens:</b> A student entering in AY27 (Batch 2027–28) graduates in 2031. Curriculum decisions made today must be grounded in what roles will persist in 2030, not just what exists now. AI will automate tasks within roles — the 2030 graduate needs to work <em>alongside</em> AI: interpreting its output, taking physical action, holding legal accountability, and building human trust. These are the things AI structurally cannot do.</div>
+    <div class="sc-grid2">
+      <div class="sc-card">
+        <div class="sc-ctitle">Changing Employment Landscape — India 2026–31</div>
+          <div class="sc-li arr"><b>WEF Future of Jobs Report 2025:</b> Healthcare support, logistics/supply chain, and green economy among the fastest-growing job categories globally. Supply-side training is the only way to meet this demand.</div>
+          <div class="sc-li arr"><b>LinkedIn Jobs on the Rise India 2024:</b> Healthcare Support in top 5 fastest-growing categories by hiring velocity. Supply Chain &amp; Logistics and Aviation Operations in top 20.</div>
+          <div class="sc-li arr"><b>MoHFW Health Workforce 2030:</b> 4.3Mn nurse shortage and 13L+ AHP gap. Private training institutions are the only pipeline.</div>
+          
+        <div class="sc-li arr">Urban Company IPO filings: average gross earnings ₹50,000+/month for active service professionals (electricians, plumbers, beauticians); top 20% earn ₹77,000/month — significantly above entry-level white collar</div>
+        <div class="sc-li arr">India's gig workforce: 7.7M in 2021, projected 23.5M by 2029 (NITI Aayog); delivery roles (₹25–40K/month with incentives) now compete with entry-level white collar — reflecting changing status of organised physical work</div>
+        <div class="sc-li arr">Lenskart model: Asia's largest eyewear chain with 1,500+ stores, 10,000+ employees; optometrists earn ₹22,000–39,500/month (Glassdoor, 983 salaries) — BSc Optometry graduates are the core hire at every store</div>
+        
+      </div>
+      <div class="sc-card">
+        <div class="sc-ctitle">Why Regulated Physical Professions Are the Moat</div>
+        <div class="sc-li chk">Physical patient contact, site supervision, flight operations — impossible to do remotely or digitally</div>
+        <div class="sc-li chk">Regulatory licences (INC, BCI, PCI, MoHFW, DGCA) are issued to humans — AI cannot legally hold them, creating a structural practitioner moat</div>
+        <div class="sc-li chk">New AI diagnostic/legal tools create new roles supporting AI, not replaced by it — "AI-imaging support technician" by 2028</div>
+        <div class="sc-li chk">Degree vs short course: degrees build licensing eligibility. Short courses are top-ups. For regulated professions, the degree is non-negotiable.</div>
+        <div class="sc-li chk">Sectors prioritised: large existing enrolment base (&gt;1L/yr), fast regulatory approval (&lt;9 months), immediate employer demand</div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:16px;margin-bottom:4px;">
+    <div onclick="var b=this.nextElementSibling;var open=b.style.display!=='none';b.style.display=open?'none':'block';this.querySelector('.tog').textContent=open?'▶':'▼';"
+         style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);cursor:pointer;user-select:none;border-bottom:1px solid var(--border);">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy);">Roles That Will Persist in 2030–31</div>
+        <div style="font-size:11px;color:var(--light);margin-top:2px;">Physical presence · Licensed practice · Irreducible human judgment · Sources: WEF FoJ 2025, NSDC, MoHFW, Glassdoor India</div>
+      </div>
+      <span class="tog" style="font-size:12px;color:var(--light);flex-shrink:0;padding-left:12px;">▼</span>
+    </div>
+    <div style="padding:16px;"><p style="font-size:11.5px;color:var(--light);margin-bottom:12px;">These roles are growing now or emerging by 2028–30. All require physical presence, licensed practice, or irreducible human judgment. Sources: Glassdoor, Careers360, NITI Aayog, company filings, sector reports.</p>
+    <div class="job-grid3">
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Allied Health</span><div class="jcard-role">Radiology / Imaging Technician</div><div class="jcard-sal">₹2.5–5L/yr (fresher) → ₹5–10L experienced</div><div class="jcard-where">Dr. Lal PathLabs, Apollo, Fortis, SRL, district hospitals</div><div class="jcard-future">Glassdoor/Careers360: BSc MRIT starting ₹2.5–4L; CT/MRI specialisation adds premium. Diagnostic chain expansion into Tier 2–3 cities = direct jobs for graduates near campus.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Allied Health</span><div class="jcard-role">Medical Lab Technician (MLT)</div><div class="jcard-sal">₹2–3.5L/yr (fresher) → ₹3.2–7L experienced</div><div class="jcard-where">Dr. Lal PathLabs (4,000+ centres), Thyrocare, Metropolis</div><div class="jcard-future">70% of medical decisions depend on lab reports. Diagnostic chains expanding into Tier 2–3 — each new centre needs 2–3 MLTs. Active MoU model already running with colleges.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Allied Health</span><div class="jcard-role">Optometrist — Retail Chain</div><div class="jcard-sal">₹22,000–39,500/month (Glassdoor, 983 salaries)</div><div class="jcard-where">Lenskart (1,500+ stores), Vision Express, Lawrence &amp; Mayo</div><div class="jcard-future">Lenskart has 10,000+ employees; optometrist is core hire at every store. Expanding at 40 stores/month into Tier 2–3. BSc Optometry = direct, volume employment pathway.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Hospitality</span><div class="jcard-role">Hotel / Resort Ops Manager</div><div class="jcard-sal">₹3–6L/yr (entry) → ₹8–15L mid-career</div><div class="jcard-where">OYO, Treebo, Lemon Tree (all Tier 2–3 expansion), Marriott, ITC</div><div class="jcard-future">Budget and mid-market hotels expanding into 400+ Tier 2–3 cities. BHM graduates from non-metro campuses well-placed for regional hotel management roles.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Aviation</span><div class="jcard-role">Airport Ground Ops / Customer Service</div><div class="jcard-sal">₹3.5–8L/yr (entry) → ₹8–14L (senior ops)</div><div class="jcard-where">IndiGo, Air India, AAI, Adani Airports (150+ by 2030)</div><div class="jcard-future">150+ new airports by 2030 under UDAN scheme — many in Tier 2–3 cities. Each airport needs 15–30 trained ops staff. IndiGo alone hiring 10,000+ operations staff annually.</div></div>
+      <div class="jcard"><span class="yr-tag yr-new">Emerging 2027–28 · Quick Commerce</span><div class="jcard-role">Dark Store Operations Manager</div><div class="jcard-sal">₹5–10L/yr</div><div class="jcard-where">Blinkit (2,200+ stores), Zepto (800+), Instamart</div><div class="jcard-future">Blinkit added 1,000+ dark stores in 2024–25 alone. Each store needs an ops manager — inventory, SLA, team management. Expanding into Tier 2 cities in 2026–27. Management-degree graduate profile.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Logistics</span><div class="jcard-role">Logistics / Supply Chain Exec</div><div class="jcard-sal">₹3–5L/yr (entry) → ₹7–14L (senior)</div><div class="jcard-where">Delhivery, BlueDart, DTDC, regional 3PL firms</div><div class="jcard-future">47L new logistics jobs by 2030 (Logistics SSC). PM Gati Shakti creating logistics parks in Tier 2–3 cities. BBA Logistics = direct feeder for warehouse ops, distribution centre management roles.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Growing Now · Pharmacy</span><div class="jcard-role">Pharmacist / Pharmacy Chain Manager</div><div class="jcard-sal">₹2.5–5L/yr (B.Pharma fresher) → ₹5–10L mid</div><div class="jcard-where">Apollo Pharmacy (5,000+ outlets), MedPlus, Jan Aushadhi (16,912 outlets)</div><div class="jcard-future">Jan Aushadhi scheme adding 1,000+ new outlets/year — all need licensed pharmacists. Apollo Pharmacy expanding to Tier 2–3. B.Pharma = govt-mandated placement pipeline.</div></div>
+      <div class="jcard"><span class="yr-tag yr-new">Emerging 2027–28 · Cross-sector</span><div class="jcard-role">Home Health / Diagnostic Field Executive</div><div class="jcard-sal">₹3–6L/yr</div><div class="jcard-where">Tata 1mg, PharmEasy, Portea, MediBuddy</div><div class="jcard-future">Tata 1mg revenue ₹1,968Cr FY25; home diagnostics growing 30%+ annually. AHP graduates conducting home sample collection, health monitoring — new role emerging outside hospital walls.</div></div>
+    </div>
+    <div class="sc-alert amber" style="margin-top:8px;"><b>NCVET / NSQF — additional lower-cost programme opportunity:</b> Alongside the degree launches, NCVET-aligned 3-year vocational programs (NSQF Level 5–6) are an emerging low-price-point play (₹30–60K/yr). These can be run in parallel using the same labs and faculty — e.g., MLT Certificate (NSQF 5), Logistics Operations Certificate (NSQF 6). Strong demand in Tier 2/3 where a full 3-year BSc is unaffordable. Separate workstream to evaluate. Source: NCVET Regulations 2020; NSDC PMKVY 3.0.</div>
+      <div style="margin-top:10px;font-size:10px;color:var(--light);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;"><b>Sources:</b> WEF Future of Jobs Report 2025 · NSDC India Skills Report 2025 · LinkedIn Jobs on the Rise India 2024 (actual hiring velocity data) · MoHFW Health Workforce India 2030 · NITI Aayog Gig Economy Report 2022 · Glassdoor India salary surveys · Careers360 sector reports 2025</div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="gold-bar"></div>
+<div id="sectors-evaluated">
+  <div class="banner"><h2>Sector Evaluation &amp; Selection</h2><p>How we went from 50+ program categories to 8 AY27 priorities — and how each sector scores</p></div>
+  <div class="gold-bar"></div>
+  <div class="page">
+
+    <div style="font-size:12px;color:var(--mid);margin-bottom:18px;line-height:1.7;max-width:820px;">We evaluated every credentialised program category in India against three questions. Sectors that cleared all three became the AY27 shortlist. Sectors that cleared one or two became the AY29+ pipeline.</div>
+
+    <!-- 3 SELECTION DIMENSIONS -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:28px;">
+      <div style="background:var(--navy);color:#fff;padding:20px 22px;border-radius:var(--r) 0 0 var(--r);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:8px;">1 — Demand &amp; Market</div>
+        <div style="font-size:16px;font-weight:800;margin-bottom:10px;line-height:1.2;">Is there durable,<br>growing demand?</div>
+        <div style="height:1px;background:rgba(255,255,255,.15);margin-bottom:10px;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;">
+          <div style="margin-bottom:5px;">→ Annual national enrolment &gt;50,000/yr</div>
+          <div style="margin-bottom:5px;">→ Sector CAGR &gt;8%</div>
+          <div style="margin-bottom:5px;">→ Employer demand confirmed (active hiring)</div>
+          <div style="margin-bottom:5px;">→ Market size &gt;₹10,000Cr addressable</div>
+          <div>→ Jobs growth structural, not cyclical</div>
+        </div>
+      </div>
+      <div style="background:#0f4c35;color:#fff;padding:20px 22px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#86efac;margin-bottom:8px;">2 — AI Durability</div>
+        <div style="font-size:16px;font-weight:800;margin-bottom:10px;line-height:1.2;">Does the profession<br>survive automation?</div>
+        <div style="height:1px;background:rgba(255,255,255,.15);margin-bottom:10px;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;">
+          <div style="margin-bottom:5px;">→ Physical presence with patient/site required</div>
+          <div style="margin-bottom:5px;">→ Regulatory licence issued only to humans (INC / BCI / PCI / NCAHP / DGCA)</div>
+          <div style="margin-bottom:5px;">→ Real-time judgment in non-scripted situations</div>
+          <div style="margin-bottom:5px;">→ Human trust — patient/court won't accept AI</div>
+          <div style="font-size:10px;margin-top:8px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.15);padding-top:8px;">AI-Proof Score: weighted composite. Physical presence 30% + Licensing 25% + Judgment 20% + Trust 15% + Dexterity 10%.</div>
+        </div>
+      </div>
+      <div style="background:#1e3a5f;color:#fff;padding:20px 22px;border-radius:0 var(--r) var(--r) 0;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fde68a;margin-bottom:8px;">3 — Regulatory &amp; Launch Ease</div>
+        <div style="font-size:16px;font-weight:800;margin-bottom:10px;line-height:1.2;">How easy is<br>the launch?</div>
+        <div style="height:1px;background:rgba(255,255,255,.15);margin-bottom:10px;"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;">
+          <div style="margin-bottom:5px;">→ Regulatory landscape: is the licensing body active, clear-cut &amp; approachable? (AICTE = fast &amp; clear; BCI = expensive upfront; INC = slow &amp; political; NCAHP = new but functional)</div>
+          <div style="margin-bottom:5px;">→ Approval timeline: licence in hand within 12 months of application</div>
+          <div style="margin-bottom:5px;">→ Total cost (regulatory + infra) under ₹1.5Cr all-in</div>
+          <div>→ Admission route: counselling-based (state quota fills predictably) or direct merit (requires outreach but faster cycle)</div>
+        </div>
+        <div style="font-size:10px;margin-top:8px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.15);padding-top:8px;">Viability Score: regulatory fees (30%) + approval timeline (25%) + infra cost (20%) + regulatory landscape complexity (15%) + admission ease (10%).</div>
+      </div>
+    </div>
+
+    <!-- 12 SECTORS GRID -->
+    <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">The 12 AI-Resilient Sectors — Evaluated Against the 3 Dimensions</div>
+    <p style="font-size:11.5px;color:var(--light);margin-bottom:14px;">Each sector scored across all three selection dimensions. AI-Proof and Viability scores shown numerically. AY27 = cleared all 3 filters. AY29+ = strong potential but longer build or lower current volume.</p>
+    <div style="overflow-x:auto;margin-bottom:20px;">
+<table style="width:100%;border-collapse:collapse;font-size:11.5px;">
+<thead>
+<tr style="background:#0d1f35;">
+  <td style="padding:6px 11px;"></td>
+  <td colspan="4" style="padding:6px 10px;font-size:9px;font-weight:700;color:#93c5fd;text-align:center;border-left:2px solid rgba(147,197,253,.4);border-right:2px solid rgba(147,197,253,.4);letter-spacing:.08em;text-transform:uppercase;">← Dimension 1: Demand &amp; Market →</td>
+  <td colspan="5" style="padding:6px 10px;font-size:9px;font-weight:700;color:#86efac;text-align:center;border-right:2px solid rgba(134,239,172,.4);letter-spacing:.08em;text-transform:uppercase;">← Dimension 2: AI Durability →</td>
+  <td colspan="5" style="padding:6px 10px;font-size:9px;font-weight:700;color:#fde68a;text-align:center;border-right:2px solid rgba(253,230,138,.4);letter-spacing:.08em;text-transform:uppercase;">← Dimension 3: Regulatory &amp; Launch Ease →</td>
+  <td style="padding:6px 10px;font-size:9px;font-weight:700;color:rgba(255,255,255,.6);text-align:center;letter-spacing:.08em;text-transform:uppercase;">Result</td>
+</tr>
+<tr style="background:var(--navy);">
+  <th style="padding:9px 11px;text-align:left;color:#fff;font-size:9.5px;text-transform:uppercase;min-width:130px;">Sector</th>
+  <th style="padding:9px 10px;text-align:center;color:#93c5fd;font-size:9.5px;text-transform:uppercase;border-left:2px solid rgba(147,197,253,.3);">Enrolment/yr</th>
+  <th style="padding:9px 10px;text-align:center;color:#93c5fd;font-size:9.5px;text-transform:uppercase;"># Colleges</th>
+  <th style="padding:9px 10px;text-align:center;color:#93c5fd;font-size:9.5px;text-transform:uppercase;">CAGR</th>
+  <th style="padding:9px 10px;text-align:center;color:#93c5fd;font-size:9.5px;text-transform:uppercase;border-right:2px solid rgba(147,197,253,.3);">Employer demand</th>
+  <th style="padding:9px 10px;text-align:center;color:#86efac;font-size:9.5px;text-transform:uppercase;border-left:1px solid rgba(134,239,172,.3);">AI-Proof score</th>
+  <th style="padding:9px 10px;text-align:center;color:#86efac;font-size:9.5px;text-transform:uppercase;">Physical presence?</th>
+  <th style="padding:9px 10px;text-align:center;color:#86efac;font-size:9.5px;text-transform:uppercase;">Human licence?</th>
+  <th style="padding:9px 10px;text-align:center;color:#86efac;font-size:9.5px;text-transform:uppercase;">Human judgment?</th>
+  <th style="padding:9px 10px;text-align:center;color:#86efac;font-size:9.5px;text-transform:uppercase;border-right:2px solid rgba(134,239,172,.3);">Irreplaceable trust?</th>
+  <th style="padding:9px 10px;text-align:center;color:#fde68a;font-size:9.5px;text-transform:uppercase;border-left:1px solid rgba(253,230,138,.3);">Viability score</th>
+  <th style="padding:9px 10px;text-align:center;color:#fde68a;font-size:9.5px;text-transform:uppercase;">Reg. body ease</th>
+  <th style="padding:9px 10px;text-align:center;color:#fde68a;font-size:9.5px;text-transform:uppercase;">Approval timeline</th>
+  <th style="padding:9px 10px;text-align:center;color:#fde68a;font-size:9.5px;text-transform:uppercase;">Total cost</th>
+  <th style="padding:9px 10px;text-align:center;color:#fde68a;font-size:9.5px;text-transform:uppercase;border-right:2px solid rgba(253,230,138,.3);">Admission ease</th>
+  <th style="padding:9px 10px;text-align:center;color:#fff;font-size:9.5px;text-transform:uppercase;">Launch?</th>
+</tr>
+</thead>
+<tbody><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Nursing</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~1.5–2L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">1,550+</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">9.6%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — 4.3Mn shortage</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:1px solid #e8f5e8;">96</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Yes (INC)</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — patient care</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — patient trust</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">38</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Difficult (INC+state)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">9–12 mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹1–1.2Cr</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Merit (most programs); NEET only for BPT/BOT</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dbeafe;color:#1e40af;white-space:nowrap;">Yes — long lead</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Allied Health</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~2–3L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">1,350+</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">9.6%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — 13L+ gap</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:1px solid #e8f5e8;">92</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Yes (NCAHP)</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — diagnostics</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — clinical</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:2px solid #fff8e7;">83</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Functional (NCAHP)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹20–100L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">NEET + counselling</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Priority 1</span></td></tr><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Hospitality</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~3–4L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">1,249</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">14.8%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — hotel chain scale-up</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:1px solid #e8f5e8;">88</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">No formal</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — service</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — guest trust</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:2px solid #fff8e7;">85</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Easy (NCHMCT)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">3–5 mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹55–90L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">NCHMCT JEE + direct</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Running (ITM)</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Pharmacy</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~3.5L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">1,696</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">10%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — Jan Aushadhi + chains</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">84</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Yes (PCI)</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — dispensing</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — patient safety</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:2px solid #fff8e7;">72</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Established (PCI)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹60–110L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct merit</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Running (IITM)</span></td></tr><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Law</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~3–5L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">1,100+</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">5.9%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">Moderate — CLAT 92K regs</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">82</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Yes (BCI)</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — legal arg.</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — court</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">54</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Expensive (BCI)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹80–150L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">CLAT / direct</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dbeafe;color:#1e40af;white-space:nowrap;">JUJ incr.</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Aviation (BBA)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~50K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">280+</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">20%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — 1.2M jobs by 2035</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">82</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Partial (DGCA)</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — ops mgmt</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — safety trust</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:2px solid #fff8e7;">89</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Easy (AICTE)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹25–45L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct merit</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Priority</span></td></tr><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Logistics (BBA)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~50–80K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">116–327</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">11%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — 47L jobs by 2030</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">72</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">No</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — coordination</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--amber);border-right:2px solid #e8f5e8;">Moderate</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:2px solid #fff8e7;">92</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Easy (AICTE)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹5–15L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct merit</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Priority</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Retail (BBA)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~20–30K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">80–152</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">17%</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">High — dark stores Tier 2</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">71</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">No</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — ops mgmt</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--amber);border-right:2px solid #e8f5e8;">Moderate</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:2px solid #fff8e7;">92</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Easy (AICTE)</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">6 months</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">₹5–15L</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct merit</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#dcfce7;color:#14532d;white-space:nowrap;">Priority</span></td></tr><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Green Energy & ESG</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">&lt;15K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">&lt;20</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">15%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">Emerging — SEBI mandate</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">79</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Partial</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — ESG</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--amber);border-right:2px solid #e8f5e8;">Moderate</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">—</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">12+ mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#fef3c7;color:#92400e;white-space:nowrap;">AY29+</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Sports & Fitness</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~20K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">~60</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">12%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">Nascent — JSW, Reliance Sports</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#15803d;border-left:1px solid #e8f5e8;">86</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">No formal</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — coaching</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — sport trust</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">—</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">12+ mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#fef3c7;color:#92400e;white-space:nowrap;">AY29+</span></td></tr><tr style="background:#fff;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Defence & Drone</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">&lt;10K</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">&lt;30</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">15%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">Nascent — MoD PLI</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">82</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">Partial</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — tactical</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);border-right:2px solid #e8f5e8;">Yes — national security</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">—</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">18+ mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Direct</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#fef3c7;color:#92400e;white-space:nowrap;">AY29+</span></td></tr><tr style="background:#f9fafc;border-bottom:1px solid var(--border);"><td style="padding:8px 11px;font-weight:700;color:var(--navy);">Food/Agri/Agritech</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-left:2px solid #e8f0ff;">~2–3L</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:600;color:var(--navy);">300+</td><td style="padding:8px 10px;text-align:center;font-weight:700;color:var(--navy);">10%+</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);border-right:2px solid #e8f0ff;">Moderate — ICAR ecosystem</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#1d4ed8;border-left:1px solid #e8f5e8;">77</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--green);">Yes</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">No</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--green);">Yes — agri science</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--amber);border-right:2px solid #e8f5e8;">Moderate</td><td style="padding:8px 10px;text-align:center;font-weight:800;font-size:15px;color:#92400e;border-left:2px solid #fff8e7;">—</td><td style="padding:8px 10px;text-align:center;font-size:10.5px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">18+ mo</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);">TBD</td><td style="padding:8px 10px;text-align:center;font-size:11px;color:var(--mid);border-right:2px solid #fff8e7;">Agri CET</td><td style="padding:8px 10px;text-align:center;"><span style="font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:3px;background:#fef3c7;color:#92400e;white-space:nowrap;">AY29+</span></td></tr></tbody>
+</table>
+</div>
+    <div style="border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:8px;">
+    <div onclick="var b=this.nextElementSibling;var open=b.style.display!=='none';b.style.display=open?'none':'block';this.querySelector('.tog2').textContent=open?'▶':'▼';"
+         style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--bg);cursor:pointer;user-select:none;border-bottom:1px solid var(--border);">
+      <div style="font-size:13px;font-weight:700;color:var(--navy);">Sector Cards — AI-Proof &amp; Viability at a Glance</div>
+      <span class="tog2" style="font-size:12px;color:var(--light);flex-shrink:0;padding-left:12px;">▼</span>
+    </div>
+    <div style="padding:16px 0;"><div class="ov-grid">
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">01 · AY27</div><div class="ov-body"><div class="ov-name">Nursing</div><div class="ov-meta">CAGR: <b>9.6%</b></div><div class="ov-meta">Pvt colleges: <b>1,550+</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:96%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">96/100 ⭐</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">02 · AY27</div><div class="ov-body"><div class="ov-name">Allied Health Sciences (AHP)</div><div class="ov-meta">CAGR: <b>9.6%</b></div><div class="ov-meta">Pvt colleges: <b>1,350+</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:92%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">92/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">03 · AY27</div><div class="ov-body"><div class="ov-name">Hospitality &amp; Tourism</div><div class="ov-meta">CAGR: <b>14.8%</b></div><div class="ov-meta">Pvt colleges: <b>1,249</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:88%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">88/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">04 · AY27</div><div class="ov-body"><div class="ov-name">Pharmacy</div><div class="ov-meta">CAGR: <b>10%+</b></div><div class="ov-meta">Pvt colleges: <b>1,696</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:84%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">84/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">05 · AY27</div><div class="ov-body"><div class="ov-name">Law &amp; Legal Services</div><div class="ov-meta">CAGR: <b>5.9%</b></div><div class="ov-meta">Pvt colleges: <b>1,100+</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:82%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">82/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">06 · AY27</div><div class="ov-body"><div class="ov-name">Aviation (BBA)</div><div class="ov-meta">CAGR: <b>20%+</b></div><div class="ov-meta">Pvt colleges: <b>250–300</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:82%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">82/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">07 · AY27</div><div class="ov-body"><div class="ov-name">Logistics &amp; Supply Chain</div><div class="ov-meta">CAGR: <b>11%</b></div><div class="ov-meta">Pvt colleges: <b>116–327</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:72%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">72/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:var(--navy);">08 · AY27</div><div class="ov-body"><div class="ov-name">Retail &amp; Quick Commerce</div><div class="ov-meta">CAGR: <b>17%</b></div><div class="ov-meta">Pvt colleges: <b>80–152</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:71%;background:var(--navy);"></div></div><div class="ov-score" style="color:var(--navy);">71/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:#7c3aed;">09 · AY29+</div><div class="ov-body"><div class="ov-name">Green Energy &amp; ESG</div><div class="ov-meta">CAGR: <b>15%+</b></div><div class="ov-meta">Pvt colleges: <b>&lt;20</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:79%;background:#7c3aed;"></div></div><div class="ov-score" style="color:#7c3aed;">79/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:#7c3aed;">10 · AY29+</div><div class="ov-body"><div class="ov-name">Sports, Fitness &amp; Wellness</div><div class="ov-meta">CAGR: <b>12%+</b></div><div class="ov-meta">Pvt colleges: <b>~60</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:86%;background:#7c3aed;"></div></div><div class="ov-score" style="color:#7c3aed;">86/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:#7c3aed;">11 · AY30</div><div class="ov-body"><div class="ov-name">Defence &amp; Drone Tech</div><div class="ov-meta">CAGR: <b>15%+</b></div><div class="ov-meta">Pvt colleges: <b>&lt;30</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:82%;background:#7c3aed;"></div></div><div class="ov-score" style="color:#7c3aed;">82/100</div></div></div>
+      <div class="ov-card"><div class="ov-head" style="background:#7c3aed;">12 · AY30</div><div class="ov-body"><div class="ov-name">Food, Agri &amp; Agritech</div><div class="ov-meta">CAGR: <b>10%+</b></div><div class="ov-meta">Pvt colleges: <b>300+</b></div><div class="ov-bar"><div class="ov-bar-fill" style="width:77%;background:#7c3aed;"></div></div><div class="ov-score" style="color:#7c3aed;">77/100</div></div></div>
+    </div></div>
+  </div>
+    <div style="margin:8px 0 24px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);font-size:11.5px;color:var(--mid);line-height:1.6;"><b style="color:var(--navy);">Sectors 01–08 cleared all 3 filters → AY27 target.</b> Sectors 09–12 have strong AI-proof scores but lower current enrolment volumes (&lt;20,000/yr), nascent employer pipelines, or longer infrastructure build requirements (e.g., sports facilities, green energy labs, drone test ranges) → <b>AY29+ sequencing.</b> Viability scores not calculated for AY29+ sectors as tractability analysis is premature.</div>
+    <div style="margin-top:24px;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">Portfolio Map — How the 8 AY27 Programs Sit Against Each Other</div>
+    <p style="font-size:11.5px;color:var(--light);margin-bottom:14px;">AI-Proof (y-axis) vs Viability / ease-of-launch (x-axis). Top-right = highest combined priority. Programs in top-left are strategically important but require longer lead times or higher investment.</p>
+
+<div style="background:var(--navy2);padding:24px 40px 28px;">
+  <div style="font-size:12px;font-weight:700;color:var(--gold2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Portfolio Map — AI-Proof Score vs Viability Score</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:900px;">
+    <!-- TOP LEFT: High AI, Hard Launch -->
+    <div style="background:rgba(147,197,253,.1);border:1px solid rgba(147,197,253,.2);border-radius:6px 0 0 0;padding:16px 18px;">
+      <div style="font-size:9.5px;font-weight:700;color:#93c5fd;letter-spacing:.06em;margin-bottom:12px;">▲ HIGH AI-PROOF · COMPLEX LAUNCH</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">🏥 Nursing</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 96 · Viability 38</div>
+        <div style="font-size:10.5px;color:#fca5a5;margin-top:3px;">₹1–1.2Cr approval cost · CM/HM sign-off · 100-bed hospital MoU mandatory. Start now — do not let it delay AICTE programs.</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">💊 Pharmacy (B.Pharma)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 84 · Viability 72</div>
+        <div style="font-size:10.5px;color:#fde68a;margin-top:3px;">PCI ₹8–10L · 12 labs ₹50L total · October window · 6 months. At IITM: Pharma Mgmt via AICTE is a lighter parallel launch.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">⚖️ Law (BA/BBA LLB)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 82 · Viability 54</div>
+        <div style="font-size:10.5px;color:#fca5a5;margin-top:3px;">BCI ₹20–50L (two channels). December window. JUJ already running — BBA LLB addition is incremental.</div>
+      </div>
+    </div>
+    <!-- TOP RIGHT: High AI, Easy Launch — PRIORITY -->
+    <div style="background:rgba(134,239,172,.1);border:1px solid rgba(134,239,172,.25);border-radius:0 6px 0 0;padding:16px 18px;">
+      <div style="font-size:9.5px;font-weight:700;color:#86efac;letter-spacing:.06em;margin-bottom:12px;">▲ HIGH AI-PROOF · EASY LAUNCH ← PRIORITY ZONE</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">🏥 Allied Health Sciences (AHP)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 92 · Viability 83</div>
+        <div style="font-size:10.5px;color:#86efac;margin-top:3px;">University ₹5L + College ₹15–20L · 6 months · Sep–Dec window · No NEET for most programs (BPT/BOT only). Modular — start MLT/Dialysis for lowest infra. <b style="color:#fff;">Priority 1.</b></div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">🍽️ Hospitality (BHM)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 88 · Viability 85</div>
+        <div style="font-size:10.5px;color:#86efac;margin-top:3px;">NCHMCT ₹2–5L · 3–5 months · Already at ITM. Highest sector CAGR (14.8%). Scale from existing base.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">✈️ Aviation (BBA)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 82 · Viability 89</div>
+        <div style="font-size:10.5px;color:#86efac;margin-top:3px;">AICTE TER ₹40–75K · 6 months · Nov–Dec window · Shared infra. North India whitespace. IATA = premium differentiator.</div>
+      </div>
+    </div>
+    <!-- BOTTOM LEFT: Lower AI, Hard Launch — empty -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:0 0 0 6px;padding:16px 18px;">
+      <div style="font-size:9.5px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.06em;margin-bottom:8px;">▼ LOWER AI-PROOF · COMPLEX LAUNCH</div>
+      <div style="font-size:11.5px;color:rgba(255,255,255,.3);font-style:italic;">No programs in this quadrant. Programs with both lower AI-proof scores and complex launches are not part of this portfolio.</div>
+    </div>
+    <!-- BOTTOM RIGHT: Lower AI, Easy Launch — Volume -->
+    <div style="background:rgba(253,230,138,.07);border:1px solid rgba(253,230,138,.2);border-radius:0 0 6px 0;padding:16px 18px;">
+      <div style="font-size:9.5px;font-weight:700;color:#fde68a;letter-spacing:.06em;margin-bottom:12px;">▼ LOWER AI-PROOF · EASY LAUNCH — VOLUME PLAYS</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">🚚 Logistics (BBA)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 72 · Viability 92</div>
+        <div style="font-size:9.5px;color:rgba(253,230,138,.6);margin:2px 0;">Note: BBA trains managers, not physical logistics workers. Management roles face higher AI substitution risk than clinical roles. Physical logistics coordination + vendor management + exception handling = durable but not highest moat. WEF FoJ 2025: Supply Chain roles growing fast despite AI adoption.</div>
+        <div style="font-size:10.5px;color:#fde68a;margin-top:3px;">AICTE TER ₹40–75K · Nov–Dec · Shared infra. 4PL training + internship. 47L jobs by 2030.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">🛒 Retail / Quick Commerce (BBA)</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);">AI-proof 71 · Viability 92</div>
+        <div style="font-size:10.5px;color:#fde68a;margin-top:3px;">Add as BBA subjects (BoS update) or standalone AICTE program. Same Dec window. Blinkit/Zepto dark stores → Tier 2 expansion = direct placements.</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:10px;font-size:10px;color:rgba(255,255,255,.4);max-width:900px;line-height:1.5;">Midpoint: AI-proof 80 · Viability 70. Viability = regulatory fees (30%) + approval timeline (25%) + infra cost (20%) + faculty complexity (15%) + regulatory risk (10%). Source for costs: Programs.xlsx (consultant notes) + INC/PCI/BCI/AICTE official fee schedules.</div>
+</div>
+</div>
+
+<!-- ══════════ §5: PRIORITY DEEP DIVES ══════════ -->
+  </div>
+</div>
+<div class="gold-bar"></div>
+
+<div id="deepdives">
+  <div class="banner" style="background:var(--navy2);"><h2>Priority Deep Dives</h2><p>Allied Health · Nursing · Aviation · Logistics · Retail — full regulatory &amp; operational detail</p></div>
+  <div class="gold-bar"></div>
+  <div style="background:var(--navy);border-bottom:2px solid var(--gold);">
+    <div style="display:flex;overflow-x:auto;">
+      <button class="dd-tab active" onclick="ddTab('allied',this)">Allied Health (AHP)</button>
+      <button class="dd-tab" onclick="ddTab('aviation',this)">Aviation (BBA)</button>
+      <button class="dd-tab" onclick="ddTab('logistics',this)">Logistics &amp; Retail (BBA)</button>
+      <button class="dd-tab" onclick="ddTab('nursing',this)">Nursing (BSc)</button>
+    </div>
+  </div>
+  <div id="dd-priority-content">
+
+<div class="dd-pane active" id="dd-allied">
+    <div class="sc-alert green"><b>AHP — AY27 target · Pilot campus: JUJ.</b> Last year fully on-the-job at hospital partner. Dr. Lal PathLabs and diagnostic chains = structured placement pipeline. NEET required only for BPT and BOT. All other UG programs (MLT, MRIT, OT Tech, Dialysis, Optometry) = 10+2 merit-based. Significant admission advantage. Optometry now a 5-year program (updated NCAHP curriculum)..</div>
+    <div class="dd-met-row">
+      <div class="dd-met"><span class="dd-met-v">10L+</span><div class="dd-met-l">National AHP workforce gap</div></div>
+      <div class="dd-met"><span class="dd-met-v">1,350+</span><div class="dd-met-l">Private paramedical colleges</div></div>
+      <div class="dd-met"><span class="dd-met-v">92/100</span><div class="dd-met-l">AI-Proof score</div></div>
+      <div class="dd-met"><span class="dd-met-v">$3.6Bn</span><div class="dd-met-l">AHP staffing market 2031E</div></div>
+      <div class="dd-met"><span class="dd-met-v">57</span><div class="dd-met-l">Professions under NCAHP Act 2021</div></div>
+    </div>
+
+    <div class="dd-sub">Program Variants — What to Launch &amp; When</div>
+    <table class="ddt">
+      <tr><th>Program</th><th>Duration</th><th>NEET?</th><th>Pvt Colleges</th><th>Avg Fee (pvt)</th><th>Starting Salary</th><th>Priority</th></tr>
+      <tr><td class="ddt-h">BSc Radiology &amp; Imaging (MRIT)</td><td>3 yrs</td><td class="ddt-a">Yes (AY26+)</td><td>~400+</td><td class="ddt-gold">₹1–2L/yr</td><td>₹2.5–5L/yr</td><td><span class="step-tag st-g">P1 · AY26</span></td></tr>
+      <tr><td class="ddt-h">BSc OT / Anaesthesia Technology</td><td>3 yrs</td><td class="ddt-a">Yes (AY26+)</td><td>~250+</td><td class="ddt-gold">₹80K–1.5L/yr</td><td>₹2.5–4.5L/yr</td><td><span class="step-tag st-g">P1 · AY26</span></td></tr>
+      <tr><td class="ddt-h">BSc Medical Lab Technology (MLT)</td><td>3 yrs</td><td class="ddt-a">Yes</td><td>~500+</td><td class="ddt-gold">₹70K–1.5L/yr</td><td>₹2–4L/yr</td><td><span class="step-tag st-g">P1 · AY26</span></td></tr>
+      <tr><td class="ddt-h">BSc Dialysis Technology</td><td>3 yrs</td><td class="ddt-a">Most: No</td><td>~200+</td><td class="ddt-gold">₹60K–1.2L/yr</td><td>₹2–3.5L/yr</td><td><span class="step-tag st-b">P2 · AY27</span></td></tr>
+      <tr><td class="ddt-h">BPT Physiotherapy</td><td>4.5 yrs</td><td class="ddt-a">No</td><td>~600+</td><td class="ddt-gold">₹1–2.5L/yr</td><td>₹3–6L/yr</td><td><span class="step-tag st-b">P2 · AY27</span></td></tr>
+      <tr><td class="ddt-h">BSc Optometry</td><td>3 yrs</td><td class="ddt-a">Yes</td><td>~300+</td><td class="ddt-gold">₹80K–1.8L/yr</td><td>₹3–7L/yr</td><td><span class="step-tag st-b">P2 · AY27</span></td></tr>
+    </table>
+    <div class="sc-alert gold"><b>NEET update — AHP admissions (verified per NCAHP curriculum framework):</b> Across all NCAHP-notified UG programs, <b>NEET is explicitly mandated only for two programs: BPT (Physiotherapy) and BOT (Occupational Therapy)</b>. All other UG programs — BSc MLT, BSc MRIT, OT Technology, Dialysis Technology, Optometry, Cardiac Technology, and others — use <b>10+2 merit-based admission</b> (no NEET required). All PG and PhD programs use entrance exams conducted by the respective university, with NCAHP registration as a PG entry condition. This is a significant operational advantage: the majority of AHP programs can recruit directly from Class 12 without depending on NEET scores or centralised state counselling. <b>Optometry duration: 5 years</b> (updated NCAHP curriculum). Sources: NCAHP Institutional Establishment Framework · NCAHP curriculum documents.</div>
+
+    <div class="dd-sub">Why Allied Health Is a "Grey Area" Regulation — and Why That's an Advantage</div>
+    <div class="dd-g2">
+      <div class="dd-card">
+        <div class="dd-ctitle">What Makes It Easier Than Nursing/Law</div>
+        <div class="dd-li chk">NCAHP Act 2021 is recent — full implementation still in progress, state councils not yet fully formed in all states</div>
+        <div class="dd-li chk">Unlike Nursing (INC) or Law (BCI), no single centralised inspection body — approval primarily through university Academic Council + State Health Dept</div>
+        <div class="dd-li chk">Early movers benefit from current lighter process before NCAHP tightens further</div>
+        <div class="dd-li chk">NCAHP now notifying curricula — provides clarity; institutions adopting early signal quality</div>
+      </div>
+      <div class="dd-card">
+        <div class="dd-ctitle amber">Regulatory Risk to Watch</div>
+        <div class="dd-li arr">NCAHP becoming more active in 2026 — rules tightening over next 3 years</div>
+        <div class="dd-li arr">NEET requirement from AY26-27 will reduce intake volume initially vs non-NEET entry</div>
+        <div class="dd-li arr">State Allied Health Councils being formed — adds a new approval layer in some states</div>
+        <div class="dd-li arr">Hospital MoU is non-negotiable and has a 2–4 week sign-off cycle — start this first</div>
+      </div>
+    </div>
+
+    <div class="dd-sub">Step-by-Step Approval Process — New AHP Program at Private University</div>
+    <div class="dd-tl">
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 1 — Internal University Approval <span class="step-tag st-g">Month 1–2</span></div><div class="dd-tli-sub">Academic Council approves program. Board of Studies constituted. NCAHP notified curriculum adopted (mandatory). Faculty identification begins.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 2 — Hospital / Diagnostic Centre MoU <span class="step-tag st-a">Start here — binding constraint</span></div><div class="dd-tli-sub">Secure clinical partner MoU per specialisation. Radiology: imaging centre / hospital radiology dept. MLT: pathology lab. OT: hospital operating theatre. Typical sign-off: 2–4 weeks. Setup cost per specialisation: ₹15–80L for lab equipment.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 3 — State Allied Health Council / Health Dept <span class="step-tag st-b">Month 3–4</span></div><div class="dd-tli-sub">Formal intimation with faculty list, infrastructure documents, hospital MoU. In Rajasthan: State Health Dept (state council not fully formed). Response: 4–8 weeks typically.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 4 — NCAHP Institutional Registration <span class="step-tag st-b">Month 4–6</span></div><div class="dd-tli-sub">Register on NCAHP portal. Submit curricula alignment, faculty credentials, infrastructure self-declaration. NCAHP inspection process formalising in 2026.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 5 — NEET Admission Setup <span class="step-tag st-a">Month 5–6 · New from AY26-27</span></div><div class="dd-tli-sub">For NEET-mandatory programs: establish state counselling tie-up or deemed university quota. Confirm per-program NEET requirement with NCAHP directly.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 6 — First Admission Batch <span class="step-tag st-g">Month 6–9 · Batch 2026–27</span></div><div class="dd-tli-sub">Launch admissions. Recommended Year 1 intake: 30–60 seats per specialisation (lab + hospital clinical slots are the binding constraints, not regulatory caps). No NCAHP-prescribed intake cap.</div></div>
+    </div>
+    <div class="sc-alert gold"><b>Total timeline: 6–9 months from decision to first admission.</b> Faster than Nursing (12–18 months for INC) and Law (12 months for BCI). Hospital MoU is the single binding constraint — start this before anything else.</div>
+
+    <div class="dd-sub">Competitive Landscape</div>
+    <table class="ddt">
+      <tr><th>College</th><th>Type</th><th>Fee/yr</th><th>Intake</th><th>Partnership Model</th><th>Location</th></tr>
+      <tr><td class="ddt-h">Manipal (MAHE)</td><td>Deemed Univ</td><td class="ddt-gold">₹1.5–2.5L</td><td>100–120</td><td>Own hospitals (Manipal Health)</td><td>Manipal / Jaipur</td></tr>
+      <tr><td class="ddt-h">LPU</td><td>Private Univ</td><td class="ddt-gold">₹90K–1.5L</td><td>100</td><td>LPU Hospital + employer connects</td><td>Jalandhar</td></tr>
+      <tr><td class="ddt-h">Amity</td><td>Private Univ</td><td class="ddt-gold">₹1.5–2L</td><td>60</td><td>Amity Hospital network</td><td>Noida / Jaipur</td></tr>
+      <tr><td class="ddt-h">NIMS Jaipur</td><td>Private Univ</td><td class="ddt-gold">₹70K–1.2L</td><td>60</td><td>NIMS Hospital (own)</td><td>Jaipur <span style="font-size:9px;color:var(--green);">Tier 2</span></td></tr>
+      <tr><td class="ddt-h">Rajiv Gandhi Paramedical Institute</td><td>Standalone (Tier 2)</td><td class="ddt-gold">₹60K–1L</td><td>40–60</td><td>RML Hospital tie-up; Delhi Govt affiliated</td><td>New Delhi <span style="font-size:9px;color:var(--green);">Tier 2/standalone</span></td></tr>
+      <tr><td class="ddt-h">GGSIP University affiliated colleges</td><td>Affiliated colleges (Tier 2/3)</td><td class="ddt-gold">₹50K–90K</td><td>30–60</td><td>Govt hospital attachment via GGSIP affiliation</td><td>Delhi NCR <span style="font-size:9px;color:var(--green);">Tier 2/3</span></td></tr>
+      <tr><td class="ddt-h">Dolphin Institute of Biomedical Sciences</td><td>Standalone (Tier 2)</td><td class="ddt-gold">₹60K–1L</td><td>40–60</td><td>Teaching hospital + Dr. Lal PathLabs channel</td><td>Dehradun <span style="font-size:9px;color:var(--green);">Tier 2</span></td></tr>
+    </table>
+    
+    <div class="dd-sub">How Admissions Typically Work — AHP Programs</div>
+    <div class="sc-alert blue"><b>AHP admissions vary by program type and university structure.</b> Unlike Nursing (centralised NEET counselling), most AHP programs still use a mix of direct merit-based admission and university-level counselling. NEET requirement from AY27 will shift some programs toward centralised state counselling.</div>
+    <table class="ddt">
+      <tr><th>Program</th><th>NEET Required?</th><th>Admission Route</th><th>Eligibility</th><th>Key Dates (Indicative)</th></tr>
+      <tr><td class="ddt-h">BSc MLT (BMLT / BSc MLS)</td><td class="ddt-g">No — 10+2 merit</td><td>Direct university admission / state CET (where applicable)</td><td>10+2 PCB; 50% aggregate</td><td>Applications: Apr–Jun; admissions: Jul–Aug</td></tr>
+      <tr><td class="ddt-h">BSc MRIT (Radiology)</td><td class="ddt-g">No — 10+2 merit</td><td>Direct university admission / state CET</td><td>10+2 PCB; 50%</td><td>Applications: Apr–Jun; admissions: Jul–Aug</td></tr>
+      <tr><td class="ddt-h">BSc OT Technology / Anaesthesia</td><td class="ddt-g">No — 10+2 merit</td><td>Direct university admission</td><td>10+2 PCB; 50%</td><td>Applications: Apr–Jun; admissions: Jul–Aug</td></tr>
+      <tr><td class="ddt-h">BSc Dialysis Technology</td><td class="ddt-g">No — 10+2 merit</td><td>Direct university admission</td><td>10+2 PCB; 45–50%</td><td>Apr–Aug; fills quickly in Tier 2</td></tr>
+      <tr><td class="ddt-h">BSc Optometry (5 years)</td><td class="ddt-g">No — 10+2 merit</td><td>Direct university admission / state CET</td><td>10+2 PCB; 50%; 5-year program</td><td>Applications: Apr–Jun; admissions: Jul–Aug</td></tr>
+      <tr><td class="ddt-h">BPT (Physiotherapy)</td><td class="ddt-a">Yes — NEET required</td><td>NEET UG score + state counselling for govt quota; direct pvt university quota</td><td>10+2 PCB; NEET UG score</td><td>NEET: May; state counselling: Jul–Sep</td></tr>
+      <tr><td class="ddt-h">BOT (Occupational Therapy)</td><td class="ddt-a">Yes — NEET required</td><td>NEET UG score + state counselling; direct pvt quota</td><td>10+2 PCB; NEET UG score</td><td>NEET: May; state counselling: Jul–Sep</td></tr>
+    </table>
+    <div class="sc-alert amber"><b>Key operational note on admissions:</b> For NEET-mandatory programs, seats in government/university quota go through state centralised counselling (multiple rounds: Round 1 → Mop-up round → Stray vacancy round). Private university quota (typically 50–85% of intake) can be filled directly. For non-NEET programs, universities can admit directly year-round. The counselling calendar runs July–October annually — plan faculty onboarding and lab readiness by this window.</div>
+
+    <div class="dd-sub">Lab Requirements by Specialisation — Detailed</div>
+    <div class="sc-alert gold">Setup costs from: Allied Health Kickstart xlsx (Feb 2026); Gupta Agencies proforma invoice (₹41.7L + 18% GST = ₹49.3L for anatomy/physiology lab); BMLS lab cost breakdown (Screenshot 3): Total ₹20–25L for MLT lab. All costs are indicative for 30–60 seat batch.</div>
+    <table class="ddt">
+      <tr><th>Specialisation</th><th>Mandatory Labs</th><th>Key Equipment</th><th>Setup Cost (excl. civil work)</th><th>Civil / Infra Cost</th><th>Total Est.</th></tr>
+      <tr><td class="ddt-h">BSc MLT (BMLT)</td><td>Biochemistry Lab, Haematology &amp; Blood Banking Lab, Microbiology Lab, General Pathology Lab</td><td>Hematology Analyser ₹2–5L; Biochemistry Analyser ₹3–8L; Microscopes ₹40K–2L; Centrifuge/Refrigerators/Incubators ₹1–5L; Lab furniture &amp; fume hoods ₹2.5–3L</td><td class="ddt-gold">₹9–23L</td><td>₹5–10L (1,000–2,000 sq ft, partitioning, AC)</td><td class="ddt-gold"><b>₹15–25L</b></td></tr>
+      <tr><td class="ddt-h">BSc Dialysis Technology</td><td>Dialysis simulation lab, Nephrology equipment lab</td><td>HD Machines (min 2 units) ₹6–12L; Water treatment plant ₹3–5L; Simulation station furniture ₹2–3L</td><td class="ddt-gold">₹11–20L</td><td>₹4–8L</td><td class="ddt-gold"><b>₹15–28L</b></td></tr>
+      <tr><td class="ddt-h">BSc OT / Anaesthesia (AOTT)</td><td>Dummy OT room, Sterile room, Gas supply simulation, Anaesthesia sim station</td><td>Dummy OT table ₹1.5–3L; Anaesthesia simulator ₹5–15L; Surgical instruments demo set ₹2–4L; Gas pipeline simulation ₹1–3L</td><td class="ddt-gold">₹10–25L</td><td>₹5–8L (sterile room requirements)</td><td class="ddt-gold"><b>₹15–33L</b></td></tr>
+      <tr><td class="ddt-h">BSc MRIT (Radiology)</td><td>X-Ray room (radiation-shielded), Darkroom, PACS workstation, MRI/CT via hospital tie-up</td><td>X-Ray machine ₹8–20L (or CR system ₹15–25L); Lead-shielded room construction ₹8–15L; PACS workstation ₹3–5L; Darkroom equipment ₹2–4L</td><td class="ddt-gold">₹21–44L</td><td>₹8–15L (lead shielding mandatory)</td><td class="ddt-gold"><b>₹29–59L</b></td></tr>
+      <tr><td class="ddt-h">BSc Optometry</td><td>Refraction Lab, Contact Lens Lab, Low Vision Lab</td><td>Trail lens sets ₹80K–1.5L; Slit lamp ₹1.5–4L; Auto-refractometer ₹2–4L; Ophthalmoscope ₹30–60K; Contact lens lab instruments ₹1–2L</td><td class="ddt-gold">₹6–12L</td><td>₹4–7L</td><td class="ddt-gold"><b>₹10–19L</b></td></tr>
+      <tr><td class="ddt-h">BPT (Physiotherapy)</td><td>Exercise Therapy lab, Electrotherapy lab, Anatomy lab, Physiology lab</td><td>Treadmill + exercise equipment ₹3–6L; Electrotherapy units (US, TENS, IFT) ₹2–5L; Anatomy models ₹2–3L; Physiology equipment ₹3–6L</td><td class="ddt-gold">₹10–20L</td><td>₹5–8L</td><td class="ddt-gold"><b>₹15–28L</b></td></tr>
+    </table>
+    <div class="sc-alert amber"><b>NABL accreditation note (Screenshot 3):</b> NABL accreditation and biomedical waste management are listed as "Not Mandatory" for teaching labs under paramedical college norms. However, for any lab doing patient-facing diagnostics (not just teaching), NABL is effectively required for hospital empanelment and quality signalling. Budget ₹3–5L for NABL application and annual compliance if you intend to run a functional diagnostic lab alongside the teaching lab.</div>
+<div class="sc-alert blue"><b>Differentiation positioning:</b> Dr. Lal PathLabs MoU (sign early — active campus program) + NCAHP curriculum (mandatory) + final year fully on-the-job at hospital partner. Priority 1: Radiology and MLT — highest employer demand, clearest NEET position, fastest lab setup.</div>
+  </div>
+
+  <!-- ── AVIATION ─────────────────────────────────────────────────────── -->
+  
+<div class="dd-pane" id="dd-aviation">
+    <div class="sc-alert green"><b>Selected as second priority deep dive alongside Allied Health · Target AY27 (Batch 2027–28).</b> BBA Aviation is a management degree — no aircraft required. IATA co-branding is the key differentiator. Adani Jaipur Airport proximity creates a natural local partnership.</div>
+    <div class="dd-met-row">
+      <div class="dd-met"><span class="dd-met-v">3rd</span><div class="dd-met-l">India global aviation rank</div></div>
+      <div class="dd-met"><span class="dd-met-v">280+</span><div class="dd-met-l">BBA Aviation pvt colleges</div></div>
+      <div class="dd-met"><span class="dd-met-v">82/100</span><div class="dd-met-l">AI-Proof score</div></div>
+      <div class="dd-met"><span class="dd-met-v">11Cr+</span><div class="dd-met-l">Annual passengers +20%/yr</div></div>
+      <div class="dd-met"><span class="dd-met-v">150+</span><div class="dd-met-l">New airports by 2030</div></div>
+    </div>
+
+    <div class="dd-sub">BBA Aviation vs Aerospace — Critical Distinction</div>
+    <div class="dd-g2">
+      <div class="dd-card">
+        <div class="dd-ctitle green">BBA Aviation Management — What It Is</div>
+        <div class="dd-li chk">3-year AICTE management degree — no aircraft, no flying, no hangar</div>
+        <div class="dd-li chk">Covers: airline ops, airport management, safety, cargo, crew scheduling, GDS, DGCA/IATA/ICAO compliance</div>
+        <div class="dd-li chk">IATA certification available via training partners (Aerotech, Akbar Academy) — key brand differentiator</div>
+        <div class="dd-li chk">Drone operations module can be embedded as Semester 5 elective — DGCA certification track within BBA</div>
+        <div class="dd-li chk">Setup cost: ₹20–40L (GDS terminal optional). No DGCA approval needed for BBA.</div>
+        <div class="dd-li chk">Easy to get approval for: AICTE BBA path, 5–6 months total</div>
+      </div>
+      <div class="dd-card">
+        <div class="dd-ctitle amber">What It Is NOT — Avoid Confusion</div>
+        <div class="dd-li cross">B.Tech Aerospace Engineering: wind tunnels, aero labs, ₹3–5Cr setup — only 15–20 serious colleges nationally. Not this.</div>
+        <div class="dd-li cross">Aircraft Maintenance Engg (AME): DGCA Type A/B licences, specialised hangars required. Not this.</div>
+        <div class="dd-li cross">Pilot Training (CPL): flying school, ₹25–35L per student training cost. Not this.</div>
+        <div class="dd-li chk" style="margin-top:10px;">280+ private colleges offer BBA Aviation. 37% concentrated in Bangalore; North India is geographic whitespace.</div>
+      </div>
+    </div>
+
+    <div class="dd-sub">Step-by-Step AICTE Approval — BBA Aviation (Existing University)</div>
+    <div class="sc-alert blue"><b>Context:</b> For a university with existing AICTE programs, BBA Aviation is a Group 3 process — significantly simpler. AICTE APH 2024-27 made BBA approvals notably easier. Application portal opens December each year for the following AY.</div>
+    <div class="dd-tl">
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 1 — Academic Council Approval <span class="step-tag st-g">Month 1 · Sept–Oct 2026</span></div><div class="dd-tli-sub">Resolution for new BBA Aviation program. Designate Department Head. Program structure aligned to AICTE APH 2024-27.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 2 — IATA Partner MoU <span class="step-tag st-g">Month 1–2 · Oct 2026 · Run parallel</span></div><div class="dd-tli-sub">Identify IATA curriculum partner: Aerotech (used by Chitkara), Akbar Academy, or Cockpit Aviation. Annual licence: ~₹5–8L. Do this in parallel with AICTE — don't wait for approval.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 3 — Faculty + Infrastructure <span class="step-tag st-b">Month 1–3</span></div><div class="dd-tli-sub">Minimum 3 full-time faculty with PG qualifications; aviation industry practitioners preferred. Infrastructure: standard computer lab + GDS terminal (optional, ~₹5L). No aircraft or hangar.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 4 — AICTE NSWS Application <span class="step-tag st-a">Month 3–4 · Dec 2026–Jan 2027</span></div><div class="dd-tli-sub">Portal opens December 2026 for AY27-28 (Batch 2027–28). Submit: land/building docs, faculty CVs, equipment list, fire NOC, course scheme. TER fee: ₹40–75K.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 5 — Expert Committee Visit (if triggered) <span class="step-tag st-b">Month 4–5 · Jan–Feb 2027</span></div><div class="dd-tli-sub">For BBA at existing institutions, often desk-based or waived. Prepare: lab layout, faculty list, placement records of existing programs.</div></div>
+      <div class="dd-tli"><div class="dd-tli-dot"></div><div class="dd-tli-head">Step 6 — Approval + MoU Signing + Admissions <span class="step-tag st-g">Month 5–6 · Mar–Apr 2027 · Batch 2027–28</span></div><div class="dd-tli-sub">AICTE issues approval (60–120 seats Year 1). Sign IndiGo/Air India MoU for placement drives; Adani Jaipur Airport for internship visits. Launch AY27 admissions.</div></div>
+    </div>
+    <div class="sc-alert gold"><b>Total timeline: 5–6 months (Oct 2026 → Apr 2027 admissions for Batch 2027–28).</b> Fastest approval in this portfolio. Compare: Law BCI licensing ₹50–75L vs AICTE TER for BBA ₹40–75K — fundamentally different cost structures.</div>
+
+    <div class="dd-sub">Regulatory Bodies — Aviation</div>
+    <table class="ddt">
+      <tr><th>Body</th><th>Role</th><th>Required for BBA?</th><th>Timeline</th><th>Cost</th></tr>
+      <tr><td class="ddt-h">AICTE</td><td>Primary regulator</td><td class="ddt-g">Yes</td><td class="ddt-g">3–5 months</td><td class="ddt-gold">₹40–75K TER</td></tr>
+      <tr><td class="ddt-h">UGC</td><td>Degree authority</td><td class="ddt-g">Already approved</td><td class="ddt-g">No additional step</td><td>—</td></tr>
+      <tr><td class="ddt-h">DGCA</td><td>Aviation regulator</td><td class="ddt-a">NOT required for BBA Aviation</td><td>N/A</td><td>—</td></tr>
+      <tr><td class="ddt-h">IATA (optional)</td><td>Curriculum brand</td><td class="ddt-a">Optional — but key differentiator</td><td>2–4 months</td><td class="ddt-gold">₹5–8L/yr</td></tr>
+      <tr><td class="ddt-h">BCI licensing</td><td>Law only</td><td class="ddt-g">Not applicable</td><td>—</td><td>—</td></tr>
+    </table>
+
+    <div class="dd-sub">Jobs in 2030 — BBA Aviation Graduates</div>
+    <div class="job-grid3">
+      <div class="jcard"><span class="yr-tag yr-now">Core — Growing</span><div class="jcard-role">Airport Operations Executive</div><div class="jcard-sal">₹4–9L → ₹7–14L by 2030</div><div class="jcard-where">AAI, GMR, Adani (150+ airports by 2030)</div><div class="jcard-future">AI schedules flights; humans manage exceptions, security, crises. New airports need 5–10 ops staff each.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Core — Growing</span><div class="jcard-role">Airline Ground Staff Manager</div><div class="jcard-sal">₹5–12L/yr</div><div class="jcard-where">IndiGo, Air India, Akasa Air</div><div class="jcard-future">IndiGo adding 500+ aircraft by 2030; 3–4 ground mgmt staff per base. Physical, real-time — cannot be automated.</div></div>
+      <div class="jcard"><span class="yr-tag yr-new">Emerging 2027+</span><div class="jcard-role">Drone Operations Manager</div><div class="jcard-sal">₹4–10L/yr</div><div class="jcard-where">Agriculture, logistics, defence, infra</div><div class="jcard-future">50,000+ drone pilots needed nationally. Management layer above licensed pilots is the BBA Aviation graduate's role.</div></div>
+      <div class="jcard"><span class="yr-tag yr-new">Emerging 2028+</span><div class="jcard-role">Aviation Sustainability Manager</div><div class="jcard-sal">₹6–14L/yr by 2030</div><div class="jcard-where">International airlines, airport authorities</div><div class="jcard-future">IATA net-zero 2050 — SAF, carbon reporting, ESG roles being created across airlines and airports globally.</div></div>
+      <div class="jcard"><span class="yr-tag yr-now">Existing</span><div class="jcard-role">Cargo &amp; Logistics Coordinator</div><div class="jcard-sal">₹4–8L/yr</div><div class="jcard-where">DHL, Blue Dart, airline cargo divisions</div><div class="jcard-future">Air cargo growing 15% YoY. IATA cargo certification is a sub-differentiator within BBA Aviation.</div></div>
+      <div class="jcard"><span class="yr-tag yr-new">Emerging 2028+</span><div class="jcard-role">Urban Air Mobility Coordinator</div><div class="jcard-sal">₹5–12L/yr by 2030</div><div class="jcard-where">eVTOL startups; DGCA framework emerging</div><div class="jcard-future">Air taxis entering India 2028–30. BBA Aviation is the natural feeder degree for this entirely new profession.</div></div>
+    </div>
+
+    <div class="dd-sub">Competitive Landscape — BBA Aviation Colleges</div>
+    <table class="ddt">
+      <tr><th>College</th><th>Fee/yr</th><th>Intake</th><th>IATA?</th><th>Key Partnership</th><th>Placement</th></tr>
+      <tr><td class="ddt-h">UPES Dehradun</td><td class="ddt-gold">₹3.5L</td><td>240</td><td class="ddt-g">Yes</td><td>IndiGo, Air India, GMR</td><td>~90%</td></tr>
+      <tr><td class="ddt-h">Chitkara University</td><td class="ddt-gold">₹2.5L</td><td>120</td><td class="ddt-g">Yes (Aerotech)</td><td>Aerotech IATA curriculum</td><td>High</td></tr>
+      <tr><td class="ddt-h">Alliance University</td><td class="ddt-gold">₹2.8L</td><td>90</td><td class="ddt-g">Yes (Cockpit Avn)</td><td>Cockpit Aviation co-delivery</td><td>High</td></tr>
+      <tr><td class="ddt-h">Amity Aeronautics</td><td class="ddt-gold">₹2.5L</td><td>120</td><td class="ddt-g">Yes</td><td>Amity brand</td><td>High</td></tr>
+      <tr><td class="ddt-h">Indira Gandhi Rau Univ</td><td class="ddt-gold">₹1.2L</td><td>90</td><td class="ddt-a">No</td><td>—</td><td>Medium</td></tr>
+    </table>
+    <div class="sc-alert blue"><b>Our positioning:</b> ₹2–2.5L/yr · 60–120 seats · IATA curriculum (Aerotech) · IndiGo MoU · Adani Jaipur Airport internship · Drone ops as Semester 5 elective. Break-even at 60 seats × ₹2.5L from Year 1. IATA certification investment (₹8L) is protected by placement premium.</div>
+  </div>
+
+  <div class="dd-pane" id="dd-logistics">
+    <div class="sc-alert green"><b>BBA Logistics &amp; BBA Retail — Both AY27, same AICTE December portal.</b> Retail can be standalone OR added as subjects to existing BBA. 4PL offers specialised training + internship for Logistics. Dark store expansion (Blinkit/Zepto) into Tier 2 = direct placement pipeline.</div>
+    <div class="dd-met-row">
+      <div class="dd-met"><span class="dd-met-v">₹40–75K</span><div class="dd-met-l">AICTE TER per program</div></div>
+      <div class="dd-met"><span class="dd-met-v">5–6 mo</span><div class="dd-met-l">Approval timeline</div></div>
+      <div class="dd-met"><span class="dd-met-v">72 / 71</span><div class="dd-met-l">AI-Proof (Log / Retail)</div></div>
+      <div class="dd-met"><span class="dd-met-v">92/100</span><div class="dd-met-l">Viability score (each)</div></div>
+      <div class="dd-met"><span class="dd-met-v">₹5–15L</span><div class="dd-met-l">Infra cost (shared labs)</div></div>
+    </div>
+    <div class="dd-sub">BBA Retail — Standalone or BBA Specialisation?</div>
+    <div class="sc-grid2" style="margin-bottom:14px;">
+      <div class="sc-card"><div class="sc-ctitle green">Option A: Standalone AICTE BBA Retail</div>
+        <div class="sc-li g">Full 60-seat intake. Clear brand identity. Separate AICTE Group 3 (₹40–75K TER). Same Dec portal.</div>
+        <div class="sc-li dot">Requires own faculty appointments and curriculum scheme.</div>
+      </div>
+      <div class="sc-card"><div class="sc-ctitle amber">Option B: Retail subjects in existing BBA</div>
+        <div class="sc-li g">Add Retail Mgmt, Q-Commerce Ops as electives — no new AICTE application. BoS update only.</div>
+        <div class="sc-li dot">Cannot brand as "BBA Retail" but same Blinkit/Zepto MoU works either way.</div>
+      </div>
+    </div>
+    <div class="sc-alert blue"><b>Recommendation:</b> Option B for AY27 (add subjects immediately). File standalone BBA Retail in Dec 2026 portal for AY28 formal launch. Logistics should be standalone — 4PL partnership justifies it.</div>
+    <div class="dd-sub">Approval Process — BBA Logistics (AICTE Group 3)</div>
+    <table class="ddt">
+      <tr><th>Step</th><th>Action</th><th>Body</th><th>Window / Timing</th><th>Cost</th></tr>
+      <tr><td><span class="step-tag st-b">1</span></td><td class="ddt-h">BoS Approval</td><td>Campus internal</td><td>Sep–Oct 2026</td><td>Nil</td></tr>
+      <tr><td><span class="step-tag st-b">2</span></td><td class="ddt-h">4PL Training Partner MoU</td><td>4PL logistics co.</td><td>Oct 2026 (parallel)</td><td>Negotiate</td></tr>
+      <tr><td><span class="step-tag st-a">3</span></td><td class="ddt-h">AICTE NSWS Application</td><td>AICTE portal</td><td><b>~14 Dec 2026 (portal opens)</b></td><td>TER ₹40–75K</td></tr>
+      <tr><td><span class="step-tag st-b">4</span></td><td class="ddt-h">Expert Committee</td><td>AICTE</td><td>Feb–Mar 2027</td><td>Included</td></tr>
+      <tr><td><span class="step-tag st-g">5</span></td><td class="ddt-h">EOA + Admissions</td><td>AICTE</td><td>Mar–Apr 2027</td><td>Annual EoA ₹40–75K/yr</td></tr>
+    </table>
+  </div>
+  <div class="dd-pane" id="dd-nursing">
+    <div class="sc-alert amber"><b>⚠️ Nursing — Application pending. Window: Sep–Oct 2026. Total approval cost: ₹1–1.2Cr (CM + Health Minister sign-off required).</b> Highest AI-proof (96/100) but most complex launch. Must start now — separately from AY27 AICTE programs.</div>
+    <div class="dd-sub">Does Nursing Fit the 3-Dimension Framework?</div>
+    <table class="ddt">
+      <tr><th>Dimension</th><th>Criterion</th><th>Nursing</th><th>Verdict</th></tr>
+      <tr><td class="ddt-h">1 — Demand</td><td>Enrolment &gt;50K/yr</td><td>~1.5–2L/yr</td><td class="ddt-g">✓ Strong pass</td></tr>
+      <tr><td class="ddt-h">1 — Demand</td><td>CAGR &gt;8%</td><td>9.6%</td><td class="ddt-g">✓ Pass</td></tr>
+      <tr><td class="ddt-h">2 — AI Durability</td><td>Physical presence + licensing</td><td>INC licence, patient care — 96/100</td><td class="ddt-g">✓ Strongest in portfolio</td></tr>
+      <tr><td class="ddt-h">3 — Launch Ease</td><td>Approval &lt;12 months</td><td>9–12 months + CM/HM sign-off</td><td class="ddt-a">⚠ Borderline</td></tr>
+      <tr><td class="ddt-h">3 — Launch Ease</td><td>Total cost &lt;₹1.5Cr</td><td>₹1–1.2Cr approval + ₹80–120L infra</td><td class="ddt-r">✗ Exceeds threshold</td></tr>
+    </table>
+    <div class="sc-alert gold"><b>Strategic exception:</b> Fails Tractability but passes all Market + AI-Durability criteria. Include in portfolio — start immediately (hospital MoU Sep 2026, INC application Sep–Oct) but do not let it delay AICTE applications.</div>
+  </div></div>
+
+</div>
+
+
+<!-- MATRIX -->
+
+
+<!-- ══════════ SECTOR SELECTION FRAMEWORK + TRACKER ══════════ --><div class="gold-bar"></div>
+<div id="all-sectors">
+  <div class="banner"><h2>Sector-by-Sector Briefs</h2><p>All 12 sectors · Quick reference briefs on market, demand signals, AI-proofability, programs</p></div>
+  <div class="gold-bar"></div>
+  <div class="page" id="sector-render"></div>
+</div>
+<script>
+const sectors = [
+{id:'s01',num:'01',name:'Nursing',badge:'AY27',vc:'green',
+  tagline:'4.3Mn nurse shortage + NCLEX pathway = highest AI-proof sector with a global placement story that justifies premium fees',
+  metrics:[{v:'4.3Mn',l:'Nurse shortage (national)'},{v:'$11.2Bn',l:'India rehab market 2030'},{v:'1,550+',l:'Pvt nursing colleges'},{v:'96/100',l:'Highest AI-proof score'}],
+  pvt:'1,550+ private BSc Nursing colleges',pvtSrc:'Shiksha 2025: 2,900+ total nursing colleges; ~1,550+ privately run',
+  enrol:'~1.5–2L/yr (BSc Nursing)',enrolSrc:'INC + AISHE 2021-22: 3,592 registered nursing institutions',
+  fee:'₹1.5–3.5L/yr',
+  ai:96,
+  aiWhy:['Direct patient care — always hands-on','INC-licensed; AI cannot be a registered nurse','Clinical emergency response & triage','Family & emotional support require human presence'],
+  demand:['4.3Mn national nurse shortage by 2025','NCLEX opens USA/Canada/UAE/UK placements','Post-COVID home health & elder care boom','AIIMS, Apollo, Fortis chronically short of nurses'],
+  programs:[{n:'BSc Nursing — NCLEX prep (4-yr)',f:'₹1.5–3.5L/yr'},{n:'BPT / BSc Physiotherapy',f:'₹1–2.5L/yr'},{n:'BSc Occupational Therapy',f:'₹80K–2L/yr'},{n:'Post Basic BSc Nursing',f:'₹1–2L/yr'}],
+  launch:{fy:'AY27',campuses:'IITM &amp; NGF (approval awaited — AY27 target)',yr1:'40–60 seats',scale5:'40→60→80→100 seats (INC cap: 100 per college)',regTime:'INC state council inspection + Central INC recognition: 12–18 months',criteria:'Hospital MoU (min 100 beds), nursing lab, skill lab, demonstration room, clinical faculty'},
+  competitors:[['AIIMS-affiliated colleges','Govt rates','60–100','Very high'],['Amity (Noida)','₹1.8L/yr','60','High'],['LPU','₹1.2L/yr','60','High'],['Manipal','₹2L/yr','80','Very high']],
+  notables:[{tag:'Policy',color:'tag-green',title:'NCLEX-RN India Gateway 2024',text:'USMLE/NCLEX testing now available in India — removed a major barrier for nurses seeking USA placements. Creates strong fee premium opportunity for NCLEX-prep colleges.'},{tag:'New Model',color:'tag-blue',title:'Home Health Care Boom',text:'Portea, MediBuddy, 1mg expanding home nursing — creating 50,000+ new nursing jobs outside hospitals by 2027.'},{tag:'Trend',color:'tag-amber',title:'Elder Care Infrastructure',text:'India\'s 60+ population to double by 2031. Elder care chains (Athulya, Antara, Epoch) all aggressively hiring nursing graduates.'}],
+  verdict:'Highest AI-proof sector. Hospital MoU is the one non-negotiable. NCLEX prep positioning allows ₹2.5–3.5L/yr fees — highest fee-for-nursing in the market. Start INC process immediately.',},
+{id:'s02',num:'02',name:'Allied Health Sciences (AHP)',badge:'AY27',vc:'green',
+  tagline:'10L+ AHP workforce gap, ₹1,000Cr govt allocation — physical patient contact cannot be automated; MoHFW/NCAHP licensed',
+  metrics:[{v:'10L+',l:'AHP workforce gap'},{v:'$3.6Bn',l:'AHP staffing market 2031E'},{v:'9.6%',l:'Market CAGR'},{v:'₹1,000Cr',l:'Budget 2026-27 AHP'}],
+  pvt:'1,350+ private paramedical colleges',pvtSrc:'Shiksha 2025; supply still below 25–30L demand',
+  enrol:'~2–3L/yr (all paramedical)',enrolSrc:'AISHE 2021-22: 1,350+ colleges × avg 150+ seats',
+  fee:'₹60K–2.5L/yr',
+  ai:92,
+  aiWhy:['Physical patient contact — always present','MoHFW/NCAHP licensed roles; AI cannot be an AHP','Clinical judgment under uncertainty','Hands-on diagnostics: radiology, OT, dialysis'],
+  demand:['13L supply vs 25–30L demand — structural gap','Apollo, Fortis, Narayana, HCG hiring aggressively','Dr Lal, SRL diagnostic chains expanding rapidly','Radiology & OT Tech have highest individual demand'],
+  programs:[{n:'BSc Radiology & Imaging Tech',f:'₹1–2L/yr'},{n:'BSc OT / Anaesthesia Tech',f:'₹80K–1.5L/yr'},{n:'BSc Dialysis Technology',f:'₹70K–1.2L/yr'},{n:'BPT Physiotherapy',f:'₹1–2.5L/yr'}],
+  launch:{fy:'AY27',campuses:'JUJ (pilot campus AY27)',yr1:'60 seats per specialisation',scale5:'90→120→150→180 seats by Yr 5',regTime:'MoHFW/NCAHP: 6–12 months per new specialisation',criteria:'Clinical lab + hospital/diagnostic center MoU mandatory per specialisation'},
+  competitors:[['Manipal (MAHE)','₹1.5–2L/yr','100–120','Very high'],['LPU','₹1L/yr','100','High'],['Amity','₹1.8L/yr','60','High'],['NIMS Jaipur','₹70K/yr','60','Medium']],
+  notables:[{tag:'Policy',color:'tag-green',title:'₹1,000Cr AHP Budget 2026-27',text:'Direct govt allocation for AHP workforce expansion — first time a dedicated AHP fund in Union Budget.'},{tag:'New Model',color:'tag-blue',title:'Diagnostic Chain Campus Tie-ups',text:'Dr Lal Pathlabs, Thyrocare offering embedded internship programs with guaranteed placement — strong differentiator for new colleges.'},{tag:'Trend',color:'tag-amber',title:'NCLEX + Global AHP Demand',text:'UAE, UK, Canada fast-tracking Indian AHP hiring. NCLEX-prep positioning allows 20–30% fee premium.'}],
+  verdict:'Already piloting at JUJ. Add Radiology & OT Tech as priority specialisations — highest demand sub-roles. Diagnostic chain MoU unlocks guaranteed placement track.',},
+{
+  id:'s03',num:'03',name:'Hospitality & Tourism',badge:'AY27',vc:'green',
+  tagline:'14.8% CAGR — physical service delivery, guest experience & emotional intelligence are permanently human',
+  metrics:[{v:'$56Bn',l:'Market 2031E'},{v:'14.8%',l:'Fastest CAGR of all 12'},{v:'64Mn',l:'Tourism jobs by 2035'},{v:'1,249',l:'Pvt HM colleges'}],
+  pvt:'1,249 private hotel management colleges',pvtSrc:'CollegeDekho / Shiksha 2025',
+  enrol:'~3–4L/yr (all HM programs)',enrolSrc:'AISHE 2021-22 Type VII standalone + univ. depts',
+  fee:'₹50K–3L/yr',
+  ai:88,
+  aiWhy:['Physical guest experience — emotional intelligence','F&B, housekeeping, kitchen: hands-on always','Concierge & event management execution','Hospitality judgment is contextual, unscrip​table'],
+  demand:['$56Bn market by 2031; 14.8% CAGR — fastest of all 12','64Mn tourism jobs projected by 2035','Airport hospitality growing with aviation boom','Marriott, Taj, ITC, OYO, Hilton all hiring at scale'],
+  programs:[{n:'BHM / BSc Hotel & Hospitality',f:'₹1–3L/yr'},{n:'BBA Hospitality Management',f:'₹1.5–2.5L/yr'},{n:'BHM (Airport Hospitality track)',f:'₹1.5–3L/yr'},{n:'B.Voc Hotel Ops & F&B',f:'₹60K–1.2L/yr'}],
+  launch:{fy:'AY27',campuses:'ITM (pilot campus AY27)',yr1:'60–90 seats',scale5:'Up to 180 seats by Yr 5',regTime:'Minimal — already approved; scale via NCHMCT renewal',criteria:'Training kitchen, front office lab, F&B lab required'},
+  competitors:[['IHM Pusa (Govt)','₹8.5K/yr (total ₹38K)','120','Very high'],['Amity University','₹2.5L/yr','180','High'],['GNIHM Kolkata','₹1.4L/yr','60–90','High'],['LPU','₹1.8L/yr','120','High']],
+  notables:[{tag:'Policy',color:'tag-green',title:'India Hospitality Mission 2030',text:'MoT launched ₹2,000Cr fund for upgrading hotel schools and increasing hospitality graduates by 2030.'},{tag:'New Model',color:'tag-blue',title:'Airport Hospitality Track',text:'IndiGo, Air India partnering with colleges for branded hospitality curriculum — strong placement differentiator.'},{tag:'Trend',color:'tag-amber',title:'Tier 2 Hotel Boom',text:'OYO, Treebo, FabHotel expanding aggressively in Tier 2/3 cities; creating demand outside metro-campus colleges.'}],
+  verdict:'Already live at ITM. Fastest path to scale. Differentiate on NCHMCT JEE quality + direct hotel chain placement MoU. Add airport hospitality track for premium fee positioning.',},
+{id:'s04',num:'04',name:'Pharmacy',badge:'AY27',vc:'green',
+  tagline:'India = Pharmacy of the World — $55Bn domestic market to $130Bn by 2030; PCI-regulated, hands-on dispensing',
+  metrics:[{v:'$55Bn',l:'India pharma market 2025'},{v:'$130Bn',l:'Projected by 2030'},{v:'1,696',l:'Pvt B.Pharma colleges'},{v:'10%+',l:'Industry CAGR'}],
+  pvt:'1,696 private B.Pharma colleges',pvtSrc:'CollegeDekho 2025; PCI also regulates ~2,875 D.Pharma diploma colleges separately',
+  enrol:'~3.5–4.5L/yr (B.Pharma + D.Pharma)',enrolSrc:'PCI: 1,745 degree + 2,875 diploma colleges regulated nationally',
+  fee:'₹40K–2L/yr',
+  ai:84,
+  aiWhy:['Drug dispensing requires licensed pharmacist','Patient counselling — human interaction required','Compounding & formulation — hands-on','PCI-regulated; liability stays with practitioner'],
+  demand:['India exports generics to 150+ countries','PLI: ₹15,000Cr for bulk drug manufacturing','Jan Aushadhi Kendras: 16,912 outlets growing','CRDMO industry doubling to $14Bn by 2028'],
+  programs:[{n:'B.Pharma (4-yr)',f:'₹60K–2L/yr'},{n:'D.Pharma (2-yr)',f:'₹40K–1L/yr'},{n:'Pharma Management',f:'₹1.5–2.5L/yr'},{n:'M.Pharma / Pharm.D',f:'₹1–3L/yr'}],
+  launch:{fy:'AY27',campuses:'IITM (pilot campus AY27)',yr1:'60 seats (B.Pharma); 120 (Pharma Management)',scale5:'Up to 120 seats B.Pharma; 240 BBA by Yr 5',regTime:'Adding Pharma Management: AICTE BBA framework — 6 months; B.Pharma new campus: PCI 12 months',criteria:'Pharma lab, licensed pharmacist faculty, PCI inspection'},
+  competitors:[['LPU','₹80K/yr','120','High'],['Amity','₹1.2L/yr','60','High'],['Chandigarh Univ','₹60K/yr','180','High'],['Jaipur Pharmacy Colleges (multiple)','₹40–60K/yr','60','Medium']],
+  notables:[{tag:'Policy',color:'tag-green',title:'PLI Pharma Scheme 2.0',text:'₹15,000Cr PLI for bulk drugs and medical devices — creating massive trained workforce demand in pharma manufacturing.'},{tag:'New Model',color:'tag-blue',title:'CRDMO Boom',text:'Contract Research, Development & Manufacturing Organisations doubling to $14Bn by 2028 — premium roles for B.Pharma grads who understand both science and management.'},{tag:'Trend',color:'tag-amber',title:'Pharma Management Emerging',text:'Pharma cos (Sun, Cipla, Dr Reddy\'s) specifically recruiting BBA+pharma profile for sales, regulatory affairs, supply chain roles.'}],
+  verdict:'JU NCR already has B.Pharma. The differentiator is adding Pharma Management as a separate program — higher fee (₹1.5–2.5L) and unique positioning in a market dominated by pure science colleges.',},
+{id:'s05',num:'05',name:'Law & Legal Services',badge:'AY27',vc:'green',
+  tagline:'CLAT 2026 at all-time high (92,344 registrations) — BCI licensing means AI can never be the practitioner',
+  metrics:[{v:'92,344',l:'CLAT 2026 (all-time high)'},{v:'$2.5Bn',l:'Legal services market'},{v:'5.9%',l:'Market CAGR'},{v:'1,600+',l:'Total law colleges (BCI)'}],
+  pvt:'1,100+ private law colleges (all LLB types); 660 specifically offering integrated 5-yr BA/BBA LLB',pvtSrc:'CollegeDekho 2025: 468 pvt BA LLB + 192 pvt BBA LLB = 660 integrated; ~1,100+ total including 3-yr LLB',
+  enrol:'~3–5L/yr (all LLB programs)',enrolSrc:'CLAT 2026: 92,344 NLU-only; 1,600+ colleges total (BCI data)',
+  fee:'₹2.5–4.5L/yr',
+  ai:82,
+  aiWhy:['Court advocacy & argumentation — human mandated','Client counselling & negotiation','BCI-licensed; AI cannot practice law','Ethical-legal strategy under uncertainty'],
+  demand:['CLAT 2026: 92,344 all-time high registrations','Startup ecosystem: IP, corporate, compliance exploding','SEBI, RBI, IRDAI driving new compliance demand','India emerging international arbitration hub'],
+  programs:[{n:'BA LLB (5-yr Integrated)',f:'₹2.5–4L/yr'},{n:'BBA LLB (5-yr Integrated)',f:'₹3–4.5L/yr'},{n:'BBA Legal Management',f:'₹1.5–2.5L/yr'},{n:'LLM (Corporate/IP)',f:'₹2–3.5L/yr'}],
+  launch:{fy:'AY27',campuses:'JUJ (pilot campus AY27)',yr1:'60 per section',scale5:'60→120→180→240 seats by Yr 5',regTime:'Adding BBA LLB: 12 months BCI process; faster since institution already exists',criteria:'Moot court room, law library (5,000+ books), LLM-qualified faculty'},
+  competitors:[['Amity Law School','₹2.5L/yr','120','High'],['LPU Law','₹1.5L/yr','180','High'],['Jaipur National Univ (Law)','₹80K/yr','60','Medium'],['JECRC Jaipur','₹1.2L/yr','60','Medium']],
+  notables:[{tag:'Trend',color:'tag-green',title:'CLAT All-Time High 2026',text:'92,344 CLAT registrations in 2026 — consistent 15% YoY growth. Demand showing no sign of slowing.'},{tag:'New Model',color:'tag-blue',title:'B.Tech + LLB Emerging',text:'HNLU, SLS introduced integrated tech-law programs. BBA LLB with fintech/IP specialisation is the emerging premium track.'},{tag:'Policy',color:'tag-amber',title:'Commercial Courts Act Expansion',text:'Govt expanding commercial courts to Tier 2 cities — creating demand for commercial and litigation lawyers outside metros.'}],
+  verdict:'BCI approval faster for existing law universities. Add BBA LLB as the premium offering — higher fee (₹3L+), stronger placement in corporate law. CLAT demand at record high.',},
+{id:'s06',num:'06',name:'Aviation (BBA)',badge:'AY27',vc:'green',
+  tagline:'3rd largest aviation market + DGCA drone licensing 2023 — licensed, physical, regulated; sequenced AY28 to maintain AY27 launch focus',
+  metrics:[{v:'3rd',l:'India aviation mkt rank'},{v:'11Cr+',l:'Annual passengers (20% growth)'},{v:'280+',l:'BBA Aviation pvt colleges'},{v:'$6Bn',l:'Defence export target 2030'}],
+  pvt:'280+ BBA Aviation colleges; 149 specifically "Aviation Management" variant',pvtSrc:'Shiksha 2025: 280+ BBA Aviation colleges',
+  enrol:'~50,000/yr (BBA Aviation)',enrolSrc:'280+ colleges × avg 150–200 seats per batch',
+  fee:'₹2–4L/yr',
+  ai:82,
+  aiWhy:['Licensed pilot/ATC roles — human mandated by law','Physical airport & airline operations','Drone ops: DGCA-licensed profession (2023)','Aircraft maintenance: AME licence required'],
+  demand:['20% annual passenger growth YoY','150+ new airports planned by 2030','IndiGo, Air India, Akasa rapid fleet expansion','DGCA drone policy opened entirely new profession'],
+  programs:[{n:'BBA Aviation Management',f:'₹2–4L/yr'},{n:'BBA Airport & Airline Ops',f:'₹1.5–3L/yr'},{n:'BSc Drone Technology (UAV)',f:'₹1.5–2.5L/yr'},{n:'B.Voc Aircraft Maintenance',f:'₹1–2L/yr'}],
+  launch:{fy:'AY28',campuses:'Campus TBC; IATA curriculum tie-up required',yr1:'60–120 seats',scale5:'60→90→120→180 by Yr 5',regTime:'AICTE approval for BBA Aviation: 6–9 months; IATA curriculum: 3–6 months',criteria:'IATA course material licence; airport visit MoU; ground operations lab (optional but differentiating)'},
+  competitors:[['UPES Dehradun','₹3.5L/yr','240','Very high — 90% placement'],['Amity Aeronautics','₹2.5L/yr','120','High'],['Indira Gandhi Rau Univ','₹1.2L/yr','90','Medium'],['ILAM Bangalore','₹1.8L/yr','60','Medium']],
+  notables:[{tag:'Policy',color:'tag-green',title:'UDAN 5.0 — Regional Airport Push',text:'150+ new airports by 2030; regional routes expanding — demand for airport ops managers outside metros.'},{tag:'New Model',color:'tag-blue',title:'Drone Policy 2023 + PLI for Drones',text:'DGCA licensing made drone operation a formal profession. ₹120Cr PLI for drone manufacturing; 50,000+ licensed drone pilots needed by 2025.'},{tag:'Trend',color:'tag-amber',title:'IndiGo / Air India Co-branded Programs',text:'Both airlines partnering with colleges for co-branded cabin crew + ops management programs — guaranteed interviews for top students.'}],
+  verdict:'Strong sector sequenced to AY28 — bandwidth and IATA tie-up require preparatory groundwork during AY27. IATA co-branding (not ownership) is the fast differentiator. BSc Drone Tech is the first-mover play — launch alongside BBA Aviation for sector depth.',},
+{id:'s07',num:'07',name:'Logistics & Supply Chain',badge:'AY27',vc:'green',
+  tagline:'$800Bn sector by 2030 — 47 lakh new jobs needed; 116–327 dedicated colleges (corrected from earlier ~50)',
+  metrics:[{v:'$800Bn',l:'Logistics market by 2030'},{v:'47L',l:'New jobs by 2030 (SSC)'},{v:'116–327',l:'Logistics mgmt colleges'},{v:'10.8%',l:'Employment growth H2 2025'}],
+  pvt:'116 BBA Logistics colleges (CollegeDekho); 327 if broader logistics management programs included',pvtSrc:'CollegeDekho May 2026: 116 BBA Logistics & SCM specifically; Shiksha shows 327 across all logistics mgmt levels',
+  enrol:'~50,000–80,000/yr (BBA Logistics + broader logistics)',enrolSrc:'116 dedicated colleges × avg 300–400 seats; likely undercounted as many general BBA colleges offer logistics as elective',
+  fee:'₹1.5–2.5L/yr',
+  ai:72,
+  aiWhy:['Last-mile delivery judgment & exception handling','Customs & trade compliance negotiation','Cold chain physical oversight','Port & warehouse operations management'],
+  demand:['CEO Logistics SSC (LogiMAT 2026): 47L jobs by 2030','PM Gati Shakti: 35+ logistics parks operational','ONDC driving digital commerce logistics demand','DHL, Blue Dart, Maersk, Delhivery, Delhivery all hiring'],
+  programs:[{n:'BBA Logistics & Supply Chain',f:'₹1.5–2.5L/yr'},{n:'BBA Port & Shipping Management',f:'₹1.5–2.5L/yr'},{n:'B.Com Supply Chain Management',f:'₹1–2L/yr'},{n:'MBA / PGDM Logistics',f:'₹3–5L/yr'}],
+  launch:{fy:'AY27/28 (via existing BBA)',campuses:'Campus TBC via existing BBA AICTE approval',yr1:'120 seats (within BBA framework)',scale5:'120→180→240→300→360 seats by Yr 5',regTime:'Adding to existing AICTE BBA approval: 3–6 months curriculum update',criteria:'Warehouse/simulation lab recommended; industry MoU with DHL/3PL for curriculum co-branding'},
+  competitors:[['Amity (SCM)','₹2L/yr','120','High'],['LPU (Logistics)','₹1.2L/yr','180','High'],['NMIMS (Logistics MBA)','₹3.5L/yr','60','Very high'],['Chandigarh Univ','₹1L/yr','120','High']],
+  notables:[{tag:'Policy',color:'tag-green',title:'PM Gati Shakti',text:'35+ integrated multimodal logistics parks under construction; direct demand for 5L+ trained logistics managers by 2027.'},{tag:'New Model',color:'tag-blue',title:'3PL & 4PL Aggregators',text:'Shiprocket, Delhivery, Ecom Express building large management cadres — active on-campus recruiters at logistics programs.'},{tag:'Trend',color:'tag-amber',title:'Cold Chain Explosion',text:'Pharma PLI + food processing PLI creating 1L+ new cold chain management jobs by 2028; specialised cold chain curriculum is differentiator.'}],
+  verdict:'Correction: market has 116–327 colleges, not ~50 as stated before. Still strong opportunity — add logistics specialisation to JU\'s existing BBA approval quickly. DHL Academy co-branding is the premium differentiator.',},
+{id:'s08',num:'08',name:'Retail & Quick Commerce',badge:'AY27',vc:'green',
+  tagline:'NEW SECTOR: ₹64,000Cr Q-commerce in FY25, 2.4Mn jobs by 2027 — dark store ops and floor management are AI-resilient',
+  metrics:[{v:'₹64,000Cr',l:'Q-Commerce GOV FY25'},{v:'$12.97Bn',l:'Q-Commerce market by 2029'},{v:'2,200+',l:'Blinkit dark stores (Mar 2026)'},{v:'2.4Mn',l:'Blue-collar jobs by 2027'}],
+  pvt:'80 BBA Retail Mgmt (CollegeDekho); 152 BBA/BBM Retail (Zollege). Key pvt colleges: Chitkara (Patiala), GD Goenka (Gurugram), Parul Univ (Vadodara), Reva Univ (Bangalore), GITAM (Vizag), Dayananda Sagar, Poornima Univ (Jaipur), SAGE Univ (Bhopal)',pvtSrc:'CollegeDekho May 2026: 80 BBA Retail Mgmt; Zollege 2026: 152 BBA/BBM Retail; Shiksha: 690 incl. all levels',
+  enrol:'~20,000–30,000/yr (BBA Retail)',enrolSrc:'80–152 dedicated BBA Retail colleges × avg 150–200 seats; undercounted as general BBA includes retail elective',
+  fee:'₹1–2.5L/yr',
+  ai:71,
+  aiWhy:['Dark store operations — physical, real-time','Floor management & visual merchandising','Customer experience & complaint resolution','Vendor negotiation & procurement (contextual)'],
+  demand:['Q-Commerce GOV: ₹64,000Cr FY25 — 2x YoY growth','Blinkit: 2,200+ dark stores; Instamart: 1,100+; Zepto: 800+','2.4Mn blue-collar + management jobs by 2027','Reliance Retail, Amazon, DMart, Spencer\'s all hiring'],
+  programs:[{n:'BBA Retail & Quick Commerce',f:'₹1–2.5L/yr'},{n:'BBA Retail & E-Commerce Management',f:'₹1.5–2.5L/yr'},{n:'BSc Retail Operations & Visual Merch',f:'₹80K–1.5L/yr'},{n:'MBA Retail Management',f:'₹2–4L/yr'}],
+  launch:{fy:'AY27',campuses:'Campus TBC via existing BBA AICTE approval',yr1:'120 seats',scale5:'120→180→240→300→360',regTime:'3–6 months (curriculum update to existing BBA AICTE approval)',criteria:'Retail lab / mock store setup; Blinkit/Zepto/Reliance MoU for placement'},
+  competitors:[['Chitkara Univ (Patiala)','₹1.2L/yr','120','High'],['GD Goenka (Gurugram)','₹2.6L/yr','90','High'],['Parul University (Vadodara)','₹75K/yr','120','Medium'],['Reva University (Bangalore)','₹90K/yr','120','Medium']],
+  notables:[{tag:'New Model',color:'tag-blue',title:'Dark Store Economy',text:'Blinkit has 2,200+ dark stores as of March 2026, hiring store managers, ops leads, and category managers — directly from campus.'},{tag:'Trend',color:'tag-green',title:'Q-Commerce Market to $12.97Bn by 2029',text:'India leads global quick commerce growth at 17% projected growth rate. Three players >$1Bn revenue in FY24.'},{tag:'New Model',color:'tag-amber',title:'Hyperlocal Franchise Model',text:'Dark store franchisees investing ₹80L per store — creating demand for retail ops graduates who can manage unit economics, inventory turns, and last-mile SLAs.'}],
+  verdict:'Q-commerce is the single fastest growing retail format in India. Add as BBA specialisation at both JU campuses via existing AICTE approval. Blinkit/Zepto campus placement MoU is the anchor differentiator.',}
+]
+
+function makeSector(s) {
+  const bClass = {AY26:'b27',AY27:'b27','AY27/28':'b2728',AY28:'b28',AY29:'b29','AY29/30':'b29'}[s.badge]||'b28';
+  const vClass = {green:'v-green',blue:'v-blue',amber:'v-amber',purple:'v-purple'}[s.vc]||'v-blue';
+  return `
+<div class="scard" id="${s.id}">
+  <div class="scard-head">
+    <div class="scard-head-left"><h3>Sector ${s.num}: ${s.name}</h3><p>${s.tagline}</p></div>
+    <span class="badge ${bClass}">${s.badge}</span>
+  </div>
+  <div class="scard-metrics">${s.metrics.map(m=>`<div class="metric"><span class="metric-v">${m.v}</span><div class="metric-l">${m.l}</div></div>`).join('')}</div>
+  <div class="info-strip">
+    <div class="info-cell"><span class="info-icon">🏫</span><div><b>Pvt Colleges/Universities: </b><span>${s.pvt}</span><span class="info-src">${s.pvtSrc}</span></div></div>
+    <div class="info-cell"><span class="info-icon">📊</span><div><b>Annual Enrolment: </b><span>${s.enrol}</span><span class="info-src">${s.enrolSrc}</span></div></div>
+    <div class="info-cell"><span class="info-icon">💰</span><div><b>Avg Fee (pvt): </b><span>${s.fee}</span><span class="info-src">Annual fees at private colleges</span></div></div>
+  </div>
+  <div class="scard-body">
+    <div class="bcol">
+      <div class="bcol-title t-navy">AI-Proof: ${s.ai}/100</div>
+      <div class="ai-bar-bg"><div class="ai-bar-fg" style="width:${s.ai}%"></div></div>
+      <div class="ai-num">${s.ai}/100</div>
+      ${s.aiWhy.map(p=>`<div class="li-check">${p}</div>`).join('')}
+    </div>
+    <div class="bcol">
+      <div class="bcol-title t-gold">Demand Signals</div>
+      ${s.demand.map(p=>`<div class="li-arrow">${p}</div>`).join('')}
+    </div>
+    <div class="bcol">
+      <div class="bcol-title t-green">Programs to Launch</div>
+      ${s.programs.map(p=>`<div class="chip"><span class="chip-n">${p.n}</span><span class="chip-f">${p.f}</span></div>`).join('')}
+    </div>
+    <div class="bcol">
+      <div class="bcol-title t-purple">Launch Details</div>
+      <div class="launch-box">
+        <div class="launch-box-head">📅 ${s.launch.fy}</div>
+        <div class="launch-row"><span class="launch-key">Campuses</span><span class="launch-val">${s.launch.campuses}</span></div>
+        <div class="launch-row"><span class="launch-key">Yr 1 seats</span><span class="launch-val">${s.launch.yr1}</span></div>
+        <div class="launch-row"><span class="launch-key">5-yr scale</span><span class="launch-val">${s.launch.scale5}</span></div>
+        <div class="launch-row"><span class="launch-key">Reg. time</span><span class="launch-val">${s.launch.regTime}</span></div>
+        <div class="launch-row"><span class="launch-key">Key criteria</span><span class="launch-val">${s.launch.criteria}</span></div>
+      </div>
+      <div class="bcol-title t-purple" style="margin-top:8px;">Key Competitors</div>
+      <table class="comp-table">
+        <tr><th>College</th><th>Fee/yr</th><th>Intake</th><th>Placement</th></tr>
+        ${s.competitors.map(c=>`<tr><td>${c[0]}</td><td style="color:var(--gold);font-weight:600;">${c[1]}</td><td>${c[2]}</td><td>${c[3]}</td></tr>`).join('')}
+      </table>
+    </div>
+  </div>
+  <div style="padding:10px 14px;border-top:1px solid var(--border);background:#fafbfc;">
+    <div class="bcol-title t-navy" style="margin-bottom:8px;">Notable Developments &amp; New Models</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+      ${s.notables.map(n=>`<div class="notable-card"><span class="notable-tag ${n.color}">${n.tag}</span><h4>${n.title}</h4><p>${n.text}</p></div>`).join('')}
+    </div>
+  </div>
+  <div class="verdict ${vClass}"><b>Verdict:</b> ${s.verdict}</div>
+</div>`;
+}
+
+document.getElementById('sector-render').innerHTML = sectors.map(makeSector).join('');
+</script>
+<div id="launch-plan">
+  <div class="banner" style="background:var(--navy2);"><h2>Launch Plan</h2><p>Application windows · Licensing tracker · Campus finalisation</p></div>
+  <div class="gold-bar"></div>
+  <div class="page">
+
+    <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px;">Application Window Calendar — Jul 2026 to Jun 2027</div>
+    <p style="font-size:11px;color:var(--light);margin-bottom:10px;">Based on verified regulatory windows: NCAHP (year-round/Sep–Dec), PCI (October), AICTE Group 3 (~14 December annually), BCI (December), INC (Sep–Oct)</p>
+    <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);">
+<tr style="background:var(--navy);"><th style="padding:6px 10px;text-align:left;color:rgba(255,255,255,.6);font-size:10px;font-weight:600;min-width:110px;">Program</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Jul'26</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Aug</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Sep</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Oct</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Nov</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Dec</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Jan'27</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Feb</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Mar</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Apr</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">May</th><th style="padding:6px 5px;text-align:center;color:rgba(255,255,255,.5);font-size:9px;font-weight:700;">Jun</th></tr>
+<tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#991b1b;white-space:nowrap;">Nursing (INC)</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Oct: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Nov: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Dec: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#fde68a;border-radius:2px;" title="Jan'27: submit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Apr: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="May: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#0f766e;white-space:nowrap;">Allied Health</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Sep: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Oct: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Nov: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Dec: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#fde68a;border-radius:2px;" title="Jan'27: submit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Apr: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#7c3aed;white-space:nowrap;">Pharmacy (PCI)</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Oct: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Nov: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Dec: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Jan'27: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Apr: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#1d4ed8;white-space:nowrap;">BBA Aviation</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Oct: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Nov: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#fde68a;border-radius:2px;" title="Dec: submit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Jan'27: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Apr: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#1d4ed8;white-space:nowrap;">BBA Logistics</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Oct: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Nov: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#fde68a;border-radius:2px;" title="Dec: submit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Jan'27: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Apr: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#7c3aed;white-space:nowrap;">Pharma Mgmt</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Oct: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Nov: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#fde68a;border-radius:2px;" title="Dec: submit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Jan'27: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Mar: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Apr: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr><tr><td style="padding:6px 10px;font-size:11px;font-weight:600;color:#b45309;white-space:nowrap;">Law (BCI)</td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Jul'26: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Aug: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Sep: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Oct: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#bfdbfe;border-radius:2px;" title="Nov: prep"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#86efac;border-radius:2px;" title="Dec: open"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Jan'27: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Feb: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Mar: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#e2e8f0;border-radius:2px;" title="Apr: wait"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="May: admit"></div></td><td style="padding:3px 4px;"><div style="width:100%;height:20px;background:#a5f3fc;border-radius:2px;" title="Jun: admit"></div></td></tr>
+<tr style="background:#f9fafc;border-top:1px solid var(--border);"><td style="padding:8px 10px;font-size:9.5px;color:var(--light);" colspan="13"><b>Sources:</b> INC Notification No.4 of 2026 (Sep 30 deadline) · AICTE portal precedent Dec 14 · Programs.xlsx (PCI Oct, AHP Sep-Dec, BCI Dec) · </td></tr>
+</table><div style="display:flex;gap:16px;padding:10px 0 4px;flex-wrap:wrap;"><div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid);"><div style="width:12px;height:12px;border-radius:2px;background:#bfdbfe;border:1px solid rgba(0,0,0,.08);"></div>Preparation</div><div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid);"><div style="width:12px;height:12px;border-radius:2px;background:#86efac;border:1px solid rgba(0,0,0,.08);"></div>Window Open</div><div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid);"><div style="width:12px;height:12px;border-radius:2px;background:#fde68a;border:1px solid rgba(0,0,0,.08);"></div>Submission</div><div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid);"><div style="width:12px;height:12px;border-radius:2px;background:#e2e8f0;border:1px solid rgba(0,0,0,.08);"></div>Processing</div><div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mid);"><div style="width:12px;height:12px;border-radius:2px;background:#a5f3fc;border:1px solid rgba(0,0,0,.08);"></div>Admissions Open</div></div>
+
+    <div style="font-size:14px;font-weight:700;color:var(--navy);margin:24px 0 8px;">Licensing Application Tracker <span style="font-size:10px;font-weight:400;color:var(--green);margin-left:6px;">● Live — Supabase</span></div>
+    <div class="sc-alert gold" style="margin-bottom:10px;"><b>Key output of this exercise.</b> Editable live — click any field to update. Changes persist to Supabase.</div>
+    <div id="sb-tracker"><div class="sb-loading">Loading tracker from Supabase…</div></div>
+
+    <div style="font-size:14px;font-weight:700;color:var(--navy);margin:24px 0 8px;">Campus Finalisation <span style="font-size:10px;font-weight:400;color:var(--green);margin-left:6px;">● Live — Supabase</span></div>
+    <div class="sc-alert blue" style="margin-bottom:10px;">Click any green/blue/yellow/purple cell to fill in preferred/alternate campus, decision date, and Go/Hold/Review. Saves automatically.</div>
+    <div id="sb-campus"><div class="sb-loading">Loading campus data from Supabase…</div></div>
+
+  </div>
+</div>
+
+<div id="workstreams">
+  <div class="banner"><h2>Critical Parallel Workstreams — AY27</h2><p>Long-lead actions that must start now · Cannot be initiated after the main applications</p></div>
+  <div class="gold-bar"></div>
+  <div class="page">
+    <div class="sc-alert amber" style="margin-bottom:18px;"><b>⚠️ These workstreams cannot wait for the regulatory application cycle.</b> Several have 12–18 month lead times that are independent of — and parallel to — the AICTE/PCI/NCAHP application windows. Missing these means missing AY27.</div>
+    <table class="ddt">
+      <tr><th>#</th><th>Workstream</th><th>Lead Time</th><th>Start Deadline</th><th>Why It Can't Wait</th></tr>
+      <tr><td><span class="step-tag2 st2-r">1</span></td><td class="ddt-h">INC Hospital MoU + Nursing Approval (IITM &amp; NGF)</td><td class="ddt-r">18 months</td><td class="ddt-r">Now — Jul 2026</td><td>INC Central recognition takes 12–18 months from application. Window is Sep–Oct 2026. CM/Health Minister sign-off required. Missed previous cycle.</td></tr>
+      <tr><td><span class="step-tag2 st2-a">2</span></td><td class="ddt-h">BCI Law Scale + BBA LLB Addition (JUJ)</td><td class="ddt-a">12 months</td><td class="ddt-a">Dec 2026 window</td><td>BCI application window is December. Two channels available: ₹20L lower / ₹50L chairman route. Decision on channel must be made by Oct 2026. Consultant has leads.</td></tr>
+      <tr><td><span class="step-tag2 st2-a">3</span></td><td class="ddt-h">IATA Curriculum Partnership for Aviation</td><td class="ddt-a">4–6 months</td><td class="ddt-g">Oct 2026</td><td>IATA partner MoU (Aerotech/Akbar Academy) must be in place before AICTE application in December. Annual licence ~₹5–8L. This is the primary fee differentiator for BBA Aviation.</td></tr>
+      <tr><td><span class="step-tag2 st2-a">4</span></td><td class="ddt-h">4PL Training Partnership for Logistics</td><td class="ddt-a">2–3 months</td><td class="ddt-g">Oct 2026</td><td>4PL (major logistics company, specialised training + internship) must be approached before AICTE application. MoU strengthens application and provides immediate placement assurance.</td></tr>
+      <tr><td><span class="step-tag2 st2-b">5</span></td><td class="ddt-h">Allied Health Hospital MoUs (JUJ — per specialisation)</td><td class="ddt-b">2–4 months per MoU</td><td class="ddt-g">Now — Aug 2026</td><td>Each AHP specialisation needs a separate hospital/diagnostic centre MoU before NCAHP application. Priority: Dr. Lal PathLabs (MLT), radiology centre (MRIT), nephrology unit (Dialysis). Window opens Sep 2026.</td></tr>
+      <tr><td><span class="step-tag2 st2-b">6</span></td><td class="ddt-h">Pharma Lab Infrastructure Confirmation (IITM)</td><td class="ddt-b">3–4 months</td><td class="ddt-g">Jul–Aug 2026</td><td>PCI window is October. Space for all 12 labs must be demonstrated upfront even if only 6–8 built in Year 1. Lab layout plan and vendor quotes needed before Oct application.</td></tr>
+      <tr><td><span class="step-tag2 st2-g">7</span></td><td class="ddt-h">Campus Confirmation for Aviation + Logistics</td><td class="ddt-g">1–2 months</td><td class="ddt-g">Sep–Oct 2026</td><td>Campus TBC for both programs. Must be confirmed before AICTE portal opens in December. AICTE application requires land/building documents for specific campus.</td></tr>
+      <tr><td><span class="step-tag2 st2-g">8</span></td><td class="ddt-h">NCVET/NSQF Registration (all AY27 programs)</td><td class="ddt-g">2–3 months</td><td class="ddt-g">Oct–Nov 2026</td><td>Apply for NSQF alignment alongside main regulatory applications. Adds negligible cost, expands student eligibility for PMKVY and RPL pathways. Source: NCVET Regulations 2020.</td></tr>
+    </table>
+>
+</div>
+
+
+</div>
+
+<script>
+const SB_URL='https://ddjlfxagrykauqvryygo.supabase.co';const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkamxmeGFncnlrYXVxdnJ5eWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDk3OTUsImV4cCI6MjA5NzQyNTc5NX0.qElfu2ZSxV35hGY3-O31bZXONfRU3S1glqpfNWoA430';
+async function sbGet(t){const r=await fetch(SB_URL+'/rest/v1/'+t+'?order=id',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});if(!r.ok)throw new Error(await r.text());return r.json();}
+async function sbPatch(t,id,d){const r=await fetch(SB_URL+'/rest/v1/'+t+'?id=eq.'+id,{method:'PATCH',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({...d,updated_at:new Date().toISOString()})});if(!r.ok)throw new Error(await r.text());}
+async function sbDelete(t,id){const r=await fetch(SB_URL+'/rest/v1/'+t+'?id=eq.'+id,{method:'DELETE',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});if(!r.ok)throw new Error(await r.text());}
+async function sbInsert(t,d){const r=await fetch(SB_URL+'/rest/v1/'+t,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify(d)});if(!r.ok)throw new Error(await r.text());return(await r.json())[0];}
+
+function pillCls(s){if(s==='Apply Now')return 'pill-apply';if(s==='Prep Active')return 'pill-prep';if(s==='Pending Decision')return 'pill-pending';return 'pill-hold';}
+
+function makeEdit(val,table,rowId,field,minWidth,multiline){
+  const el=document.createElement(multiline?'textarea':'input');
+  el.value=val;
+  el.style.cssText='border:1px solid transparent;border-radius:4px;padding:3px 6px;background:transparent;font-size:11.5px;color:var(--navy);cursor:text;width:100%;font-family:inherit;box-sizing:border-box;'+(multiline?'resize:vertical;min-height:40px;':'');
+  if(minWidth)el.style.minWidth=minWidth;
+  let timer;
+  el.addEventListener('input',function(){
+    clearTimeout(timer);
+    timer=setTimeout(async function(){
+      try{await sbPatch(table,rowId,{[field]:el.value});el.style.borderColor='var(--green)';setTimeout(function(){el.style.borderColor='transparent';},1500);}
+      catch(e){el.style.borderColor='#fca5a5';}
+    },700);
+  });
+  el.addEventListener('mouseover',function(){el.style.borderColor='var(--border)';});
+  el.addEventListener('mouseout',function(){if(document.activeElement!==el)el.style.borderColor='transparent';});
+  return el;
+}
+
+function makeDelBtn(table,id,tr){
+  const btn=document.createElement('button');
+  btn.textContent='×';
+  btn.title='Delete row';
+  btn.style.cssText='background:none;border:none;color:#fca5a5;font-size:16px;cursor:pointer;padding:0 4px;line-height:1;';
+  btn.addEventListener('click',async function(){
+    if(confirm('Delete this row?')){
+      try{await sbDelete(table,id);tr.remove();}
+      catch(e){alert('Error: '+e.message);}
+    }
+  });
+  return btn;
+}
+
+function makeAddBtn(table,render){
+  const tr=document.createElement('tr');
+  const td=document.createElement('td');
+  td.colSpan=20;td.style.padding='8px';
+  const btn=document.createElement('button');
+  btn.textContent='+ Add row';
+  btn.style.cssText='font-size:11px;color:var(--gold);background:none;border:1px dashed var(--gold);border-radius:4px;padding:4px 12px;cursor:pointer;';
+  btn.addEventListener('click',render);
+  td.appendChild(btn);tr.appendChild(td);
+  return tr;
+}
+
+async function renderTracker(){
+  const el=document.getElementById('sb-tracker');
+  if(!el)return;
+  el.innerHTML='<div style="padding:20px;color:var(--light);font-size:12px;">Loading from Supabase…</div>';
+  try{
+    const rows=await sbGet('licensing_tracker');
+    const wrap=document.createElement('div');
+    wrap.style.overflowX='auto';
+    const tbl=document.createElement('table');
+    tbl.className='sb-table';
+    const hdr=document.createElement('thead');
+    hdr.innerHTML='<tr><th>Program</th><th>Campus</th><th>Window</th><th>Reg Cost</th><th>Infra Cost</th><th>Next Action</th><th>Status</th><th>Updated</th><th></th></tr>';
+    tbl.appendChild(hdr);
+    const tbody=document.createElement('tbody');
+    const statuses=['Apply Now','Prep Active','Pending Decision','On Hold — Pending'];
+    rows.forEach(function(r,i){
+      const tr=document.createElement('tr');
+      tr.style.background=i%2===0?'#fff':'#f9fafc';
+      const sel=document.createElement('select');
+      sel.className='sb-select '+pillCls(r.status);
+      sel.innerHTML=statuses.map(function(s){return '<option value="'+s+'"'+(r.status===s?' selected':'')+'>'+s+'</option>';}).join('');
+      sel.addEventListener('change',async function(){sel.className='sb-select '+pillCls(sel.value);try{await sbPatch('licensing_tracker',r.id,{status:sel.value});}catch(e){console.error(e);}});
+      var cells=[
+        makeEdit(r.program||'','licensing_tracker',r.id,'program','140px',false),
+        makeEdit(r.campus||'','licensing_tracker',r.id,'campus','60px',false),
+        makeEdit(r.app_window||'','licensing_tracker',r.id,'app_window','80px',false),
+        makeEdit(r.reg_cost||'','licensing_tracker',r.id,'reg_cost','100px',false),
+        makeEdit(r.infra_cost||'','licensing_tracker',r.id,'infra_cost','100px',false),
+        makeEdit(r.next_action||'','licensing_tracker',r.id,'next_action','160px',true),
+        sel,
+        document.createTextNode(r.updated_at?new Date(r.updated_at).toLocaleDateString('en-IN'):''),
+        makeDelBtn('licensing_tracker',r.id,tr),
+      ];
+      cells.forEach(function(c,ci){
+        const td=document.createElement('td');
+        td.style.padding='6px 8px';td.style.verticalAlign='middle';
+        td.appendChild(c);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    tbody.appendChild(makeAddBtn('licensing_tracker',async function(){
+      try{
+        const nr=await sbInsert('licensing_tracker',{program:'New program',campus:'TBC',app_window:'',reg_cost:'',infra_cost:'',next_action:'',status:'Prep Active'});
+        rows.push(nr);renderTracker();
+      }catch(e){alert(e.message);}
+    }));
+    tbl.appendChild(tbody);wrap.appendChild(tbl);
+    const note=document.createElement('div');
+    note.style.cssText='margin-top:8px;font-size:10px;color:var(--light);';
+    note.textContent='✏️ Every cell editable · × delete row · + add row · Auto-saves to Supabase · View on Vercel for live connection';
+    el.innerHTML='';el.appendChild(wrap);el.appendChild(note);
+  }catch(e){el.innerHTML='<div class="sb-error">Could not load tracker: '+e.message+' (view via Vercel URL)</div>';}
+}
+
+async function renderCampus(){
+  const el=document.getElementById('sb-campus');
+  if(!el)return;
+  el.innerHTML='<div style="padding:20px;color:var(--light);font-size:12px;">Loading from Supabase…</div>';
+  try{
+    const rows=await sbGet('campus_finalisation');
+    const wrap=document.createElement('div');
+    wrap.style.overflowX='auto';
+    const tbl=document.createElement('table');
+    tbl.className='sb-table';
+    const hdr=document.createElement('thead');
+    hdr.innerHTML='<tr><th>Program</th><th>Regulator</th><th>Window</th><th style="background:#1a4a3a;color:#86efac;">Preferred Campus</th><th style="background:#1a3a5c;color:#93c5fd;">Alternate</th><th style="background:#3d2b1f;color:#fde68a;">Decision By</th><th style="background:#2d1f3d;color:#c4b5fd;">Go/Hold/Review</th><th>Notes</th><th></th></tr>';
+    tbl.appendChild(hdr);
+    const tbody=document.createElement('tbody');
+    const ghr=['','Go','Hold','Review'];
+    rows.forEach(function(r,i){
+      const tr=document.createElement('tr');
+      tr.style.background=i%2===0?'#fff':'#f9fafc';
+      const sel=document.createElement('select');
+      sel.style.cssText='width:100%;font-weight:600;border:1px solid transparent;border-radius:4px;padding:3px 6px;background:transparent;cursor:pointer;font-family:inherit;font-size:11.5px;';
+      sel.innerHTML=ghr.map(function(s){return '<option value="'+s+'"'+(r.go_hold_review===s?' selected':'')+'>'+(s||'—')+'</option>';}).join('');
+      sel.addEventListener('change',async function(){try{await sbPatch('campus_finalisation',r.id,{go_hold_review:sel.value});}catch(e){console.error(e);}});
+      var bgColors=['','','','#f0fdf4','#eff6ff','#fefce8','#faf5ff','',''];
+      var cellVals=[
+        makeEdit(r.program||'','campus_finalisation',r.id,'program','140px',false),
+        makeEdit(r.regulator||'','campus_finalisation',r.id,'regulator','70px',false),
+        makeEdit(r.app_window||'','campus_finalisation',r.id,'app_window','80px',false),
+        makeEdit(r.preferred_campus||'','campus_finalisation',r.id,'preferred_campus','100px',false),
+        makeEdit(r.alternate_campus||'','campus_finalisation',r.id,'alternate_campus','90px',false),
+        makeEdit(r.decision_by||'','campus_finalisation',r.id,'decision_by','80px',false),
+        sel,
+        makeEdit(r.notes||'','campus_finalisation',r.id,'notes','140px',true),
+        makeDelBtn('campus_finalisation',r.id,tr),
+      ];
+      cellVals.forEach(function(c,ci){
+        const td=document.createElement('td');
+        td.style.padding='6px 8px';td.style.verticalAlign='middle';
+        if(bgColors[ci])td.style.background=bgColors[ci];
+        if(ci===3||ci===4||ci===5){const inp=c;if(inp.placeholder!==undefined)inp.placeholder='Fill in…';}
+        td.appendChild(c);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    tbody.appendChild(makeAddBtn('campus_finalisation',async function(){
+      try{
+        const nr=await sbInsert('campus_finalisation',{program:'New program',regulator:'',app_window:'',preferred_campus:'',alternate_campus:'',decision_by:'',go_hold_review:'',notes:''});
+        rows.push(nr);renderCampus();
+      }catch(e){alert(e.message);}
+    }));
+    tbl.appendChild(tbody);wrap.appendChild(tbl);
+    const note=document.createElement('div');
+    note.style.cssText='margin-top:8px;font-size:10px;color:var(--light);';
+    note.textContent='✏️ Every cell editable · × delete row · + add row · Green=preferred, blue=alternate, yellow=decision date · Auto-saves';
+    el.innerHTML='';el.appendChild(wrap);el.appendChild(note);
+  }catch(e){el.innerHTML='<div class="sb-error">Could not load campus data: '+e.message+' (view via Vercel URL)</div>';}
+}
+
+window.addEventListener('DOMContentLoaded',function(){renderTracker();renderCampus();});
+
+</script>
+
+</body>
+</html>
